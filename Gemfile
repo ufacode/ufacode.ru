@@ -38,3 +38,36 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'devise'
+gem 'russian' # russian lang
+gem 'kaminari' # paginations
+gem 'mini_magick' # image processing
+gem 'carrierwave' # file upload
+gem 'aasm' # state machine
+gem 'airbrake' # errbit notifications
+gem 'bootstrap-sass', '~> 3.2.0' # bootstrap
+gem 'autoprefixer-rails' # css prefixer
+
+group :development do
+  gem 'mina'
+  gem 'net-ssh', "~> 2.7.0"
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'sextant'
+  gem 'quiet_assets'
+  gem 'bullet'
+end
+
+group :production do
+  gem 'unicorn'
+  gem 'utf8-cleaner'
+end
+
+group :test, :development do
+  # gem "rspec"
+  # gem "rspec-rails", "~> 2.0"
+  # gem "factory_girl_rails", "~> 4.0"
+  # gem "capybara"
+  # gem 'capybara-screenshot'
+  # gem "database_cleaner"
+end
