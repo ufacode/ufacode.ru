@@ -48,6 +48,10 @@ gem 'airbrake' # errbit notifications
 gem 'bootstrap-sass', '~> 3.2.0' # bootstrap
 gem 'autoprefixer-rails' # css prefixer
 
+gem 'acts-as-taggable-on' # tags for Post
+gem 'metamagic' # meta keywords and description
+
+
 group :development do
   gem 'mina'
   gem 'net-ssh', "~> 2.7.0"
