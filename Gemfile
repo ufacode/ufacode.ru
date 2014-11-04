@@ -65,9 +65,10 @@ end
 
 group :test, :development do
   # gem "rspec"
-  # gem "rspec-rails", "~> 2.0"
-  # gem "factory_girl_rails", "~> 4.0"
-  # gem "capybara"
+  gem "rspec-rails", "~> 3.0"
+  gem "factory_girl_rails", "~> 4.0"
+  gem "faker"
+  gem "capybara"
   # gem 'capybara-screenshot'
-  # gem "database_cleaner"
+  gem "database_cleaner"
 end
