@@ -47,8 +47,7 @@ gem 'aasm' # state machine
 gem 'airbrake' # errbit notifications
 gem 'bootstrap-sass', '~> 3.3' # bootstrap
 gem 'autoprefixer-rails' # css prefixer
-
-# gem 'acts-as-taggable-on' # tags for Post
+gem 'acts-as-taggable-on' # tags for Post
 gem 'metamagic' # meta keywords and description
 
 group :development do
@@ -67,11 +66,9 @@ group :production do
 end
 
 group :test, :development do
-  # gem "rspec"
   gem "rspec-rails", "~> 3.0"
   gem "factory_girl_rails", "~> 4.0"
   gem "faker"
   gem "capybara"
-  # gem 'capybara-screenshot'
   gem "database_cleaner"
 end

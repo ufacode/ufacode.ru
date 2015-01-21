@@ -28,6 +28,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.4.2)
+      activerecord (>= 3.2, < 5)
     airbrake (4.1.0)
       builder
       multi_json
@@ -209,6 +211,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  acts-as-taggable-on
   airbrake
   autoprefixer-rails
   better_errors
