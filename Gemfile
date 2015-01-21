@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.7'
+gem 'rails', '4.1.8'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
@@ -45,12 +45,11 @@ gem 'mini_magick' # image processing
 gem 'carrierwave' # file upload
 gem 'aasm' # state machine
 gem 'airbrake' # errbit notifications
-gem 'bootstrap-sass', '~> 3.2.0' # bootstrap
+gem 'bootstrap-sass', '~> 3.3' # bootstrap
 gem 'autoprefixer-rails' # css prefixer
 
-gem 'acts-as-taggable-on' # tags for Post
+# gem 'acts-as-taggable-on' # tags for Post
 gem 'metamagic' # meta keywords and description
-
 
 group :development do
   gem 'mina'
