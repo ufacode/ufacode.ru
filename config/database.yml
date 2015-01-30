@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: '900'
+  password:
   socket: /tmp/mysql.sock
 
 development:
@@ -51,4 +51,4 @@ production:
   <<: *default
   database: ufacode_production
   username: ufacode
-  password: some_password
+  password: <%= ENV['UFACODE_DATABASE_PASSWORD'] %>
