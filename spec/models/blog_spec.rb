@@ -24,3 +24,16 @@ RSpec.describe Blog, :type => :model do
     expect(blog2.errors[:uri]).to include("has already been taken")
   end
 end
+
+# == Schema Information
+#
+# Table name: blogs
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :text(65535)
+#  uri         :string(32)
+#  author_id   :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
