@@ -53,6 +53,7 @@ group :development do
   gem 'sextant'
   gem 'quiet_assets'
   gem 'bullet'
+  gem 'annotate', '~> 2.6.5'
 end
 
 group :production do
