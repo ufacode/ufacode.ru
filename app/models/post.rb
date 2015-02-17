@@ -19,3 +19,7 @@ end
 #  updated_at  :datetime
 #  blog_id     :integer
 #
+# Indexes
+#
+#  index_posts_on_author_id  (author_id)
+#
