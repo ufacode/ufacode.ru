@@ -48,3 +48,7 @@ config/secrets.yml
 *.bowerrc
 bower.json
 /config/database.yml
+.env
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
