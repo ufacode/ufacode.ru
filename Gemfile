@@ -45,8 +45,6 @@ gem 'bootstrap-sass', '~> 3.3' # bootstrap
 gem 'autoprefixer-rails' # css prefixer
 gem 'acts-as-taggable-on' # tags for Post
 gem 'metamagic' # meta keywords and description
-# gem 'global' # for app settings
-gem 'dotenv-rails' # ENV config keys
 gem 'rails_config'
 
 group :development do
