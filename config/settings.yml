@@ -1,3 +1,5 @@
 omniauth:
   github_key:
   github_secret:
+  vk_key:
+  vk_secret:

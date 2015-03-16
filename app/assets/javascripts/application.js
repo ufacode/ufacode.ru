@@ -13,6 +13,9 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require markitup
+//= require markitup/sets/html/set
+//= require markitup_bootstraping
 //= require turbolinks
 //= require simple/clean-blog
 //= require_tree .

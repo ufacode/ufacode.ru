@@ -32,7 +32,7 @@ gem 'omniauth'
 # gem 'omniauth-twitter'
 # gem 'omniauth-facebook'
 # gem 'omniauth-linkedin'
-# gem 'omniauth-vkontakte'
+gem 'omniauth-vkontakte'
 gem 'omniauth-github'
 
 gem 'russian' # russian lang
@@ -46,6 +46,8 @@ gem 'autoprefixer-rails' # css prefixer
 gem 'acts-as-taggable-on' # tags for Post
 gem 'metamagic' # meta keywords and description
 gem 'rails_config'
+gem "redcarpet"
+gem 'markitup-rails'
 
 group :development do
   # gem 'net-ssh', "~> 2.7.0"
