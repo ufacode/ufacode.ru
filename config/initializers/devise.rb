@@ -2,6 +2,7 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   config.omniauth :github, Settings.omniauth.github_key, Settings.omniauth.github_secret
+  config.omniauth :vkontakte, Settings.omniauth.vk_key, Settings.omniauth.vk_secret
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing

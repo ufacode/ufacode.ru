@@ -15,7 +15,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     }
   end
 
-  [:github].each { |provider| provides_callback_for provider }
+  [:github, :vkontakte].each { |provider| provides_callback_for provider }
 
   def after_sign_in_path_for(resource)
     if resource.email_verified?

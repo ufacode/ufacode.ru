@@ -32,7 +32,7 @@ gem 'omniauth'
 # gem 'omniauth-twitter'
 # gem 'omniauth-facebook'
 # gem 'omniauth-linkedin'
-# gem 'omniauth-vkontakte'
+gem 'omniauth-vkontakte'
 gem 'omniauth-github'
 
 gem 'russian' # russian lang
