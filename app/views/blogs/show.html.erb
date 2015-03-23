@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Название:</strong>
+  <%= @blog.name %>
+</p>
+
+<p>
+  <strong>Описание:</strong>
+  <%= @blog.description %>
+</p>
+
+<p>
+  <strong>Адрес:</strong>
+  <%= @blog.uri %>
+</p>
+
+<p>
+  <strong>Автор:</strong>
+  <%= @blog.author_id %>
+</p>
+
+<%= link_to 'Изм', edit_blog_path(@blog) %> |
+<%= link_to 'Назад', blogs_path %>

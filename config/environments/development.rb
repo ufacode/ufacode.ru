@@ -44,5 +44,5 @@ Rails.application.configure do
   config.app_domain = 'localhost'
 
   # Email
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
 end

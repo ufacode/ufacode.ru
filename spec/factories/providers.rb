@@ -17,8 +17,7 @@
 FactoryGirl.define do
   factory :provider do
     user nil
-name "MyString"
-uid "MyString"
+    name 'MyString'
+    uid 'MyString'
   end
-
 end

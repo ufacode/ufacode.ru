@@ -16,7 +16,7 @@
 
 class Provider < ActiveRecord::Base
   belongs_to :user
-  validates_presence_of   :uid, :name
+  validates_presence_of :uid, :name
   validates_uniqueness_of :uid, scope: :name
 
   def self.find_for_oauth(auth)
