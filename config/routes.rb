@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+  post 'markdown/preview'
+
+  resources :posts
 
   resources :blogs
 
