@@ -27,3 +27,48 @@
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+
+<div class="panel panel-default">
+  <h3><%= t('comments.title') %></h3>
+     
+    <div class="panel-body">        
+      <ul class="list-group">
+      <% @post.comments.each do |comment| %>
+        <li class="list-group-item">
+          <div class="row">
+            <a name="comment<%= comment.id %>"></a>
+            <div class="col-md-2">
+              <%= image_tag comment.user.image, if comment.user.image %>
+            </div>
+            <div class="col-md-10">
+              <div class="mic-info">
+                <%= t('comments.from') %>: <strong><%= comment.user.name %></strong> <%= human_date(comment.created_at) %>
+              </div>                  
+              <p><%= simple_format(comment.content) %></p>                 
+              <% only_for_owner @post do %>
+              <div class="action">
+                <%= button_to post_comment_path(@post.id, comment.id), {method: :delete, remote: true, data: {confirm: t('comments.delete_confirm')}, title: t('comments.delete')} do %>
+                <span class="glyphicon glyphicon-trash"></span> <%= t('comments.delete') %>
+                <% end %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </li>
+      <% end if @post.comments %>
+      </ul>
+    </div>   
+    <% if user_signed_in? %>
+    <h3><%= t('comments.create_comment') %></h3>
+      <%= form_for([@post, @comment]) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content %>
+        </div>
+        <div class="form-group">
+          <%= f.submit t('comments.create_comment') %>
+        </div>
+      <% end %>
+    <% else %>
+        <%= t('comments.before_create_login') %>
+    <% end %>
+</div>

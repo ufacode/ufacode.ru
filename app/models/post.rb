@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :author, class_name: 'User'
   belongs_to :blog
+  has_many :comments
   mount_uploader :image, ImageUploader
 end
 

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   post 'markdown/preview'
 
-  resources :posts
+  resources :posts do
+    resources :comments, controller: 'posts/comments', only: [:create, :destroy]
+  end
 
   resources :blogs
 
