@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211142820) do
+ActiveRecord::Schema.define(version: 20150325114456) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -26,14 +26,15 @@ ActiveRecord::Schema.define(version: 20150211142820) do
   add_index "blogs", ["uri"], name: "index_blogs_on_uri", using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "image",       limit: 255
-    t.text     "content",     limit: 65535
-    t.text     "content_cut", limit: 65535
-    t.integer  "author_id",   limit: 4
+    t.string   "name",         limit: 255
+    t.string   "image",        limit: 255
+    t.text     "content",      limit: 65535
+    t.text     "content_cut",  limit: 65535
+    t.integer  "author_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "blog_id",     limit: 4
+    t.integer  "blog_id",      limit: 4
+    t.boolean  "announcement", limit: 1
   end
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
@@ -87,6 +88,7 @@ ActiveRecord::Schema.define(version: 20150211142820) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email",      limit: 255
+    t.string   "role",                   limit: 255
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

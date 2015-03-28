@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates_presence_of :name
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
 
+  before_validation :set_role
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
     # Get the identity and user if they exist
@@ -53,6 +55,11 @@ class User < ActiveRecord::Base
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
+
+  private
+    def set_role
+      self.role = 'user' unless self.role
+    end
 end
 
 # == Schema Information
@@ -78,6 +85,7 @@ end
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
+#  role                   :string(255)
 #
 # Indexes
 #
