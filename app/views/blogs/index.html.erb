@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Список блогов</h1>
 
 <table class="table">
@@ -21,13 +20,18 @@
         <td><%= blog.uri %></td>
         <td><%= blog.author.name %></td>
         <td><%= link_to 'Показать', blog %></td>
-        <td><%= link_to 'Изменить', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Удалить', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :edit, blog %>
+          <td><%= link_to 'Изменить', edit_blog_path(blog) %></td>
+        <% end %>
+        <% if can? :destroy, blog %>
+          <td><%= link_to 'Удалить', blog, method: :delete, data: { confirm: 'Вы точно хотите удалить?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'Новый блог', new_blog_path %>
+<% if can? :create, blog %>
+ <%= link_to 'Новый блог', new_blog_path %>
+<% end %>
