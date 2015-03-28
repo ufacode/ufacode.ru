@@ -48,6 +48,7 @@ gem 'metamagic' # meta keywords and description
 gem 'rails_config'
 gem "redcarpet"
 gem 'markitup-rails'
+gem 'cancancan', '~> 1.10'
 
 group :development do
   # gem 'net-ssh', "~> 2.7.0"
