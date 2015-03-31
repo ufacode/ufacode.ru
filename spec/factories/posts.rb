@@ -1,9 +1,10 @@
-class Post < ActiveRecord::Base
-  validates_presence_of :name, :blog, :author
+FactoryGirl.define do
+  factory :post do
+    name  { Faker::Lorem.sentence }
+    association :author, factory: :user, strategy: :build
+    association :blog, factory: :blog, strategy: :build
 
-  belongs_to :author, class_name: 'User'
-  belongs_to :blog
-  mount_uploader :image, ImageUploader
+  end
 end
 
 # == Schema Information
