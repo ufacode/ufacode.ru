@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Listing Posts</h1>
 
 <table>
@@ -23,13 +22,18 @@
         <td><%= post.author_id %></td>
         <td><%= post.blog_id %></td>
         <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :edit, post %>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <% end %>
+        <% if can? :destroy, post %>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>
+<% if can? :create, Post %>
+    <%= link_to 'New Post', new_post_path %>
+<% end %>
