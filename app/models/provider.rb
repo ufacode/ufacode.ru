@@ -1,3 +1,13 @@
+class Provider < ActiveRecord::Base
+  belongs_to :user
+  validates :uid, :name, presence: true
+  validates :uid, uniqueness: { scope: :name }
+
+  def self.find_for_oauth(auth)
+    find_or_create_by(uid: auth.uid, name: auth.provider)
+  end
+end
+
 # == Schema Information
 #
 # Table name: providers
@@ -13,13 +23,3 @@
 #
 #  index_providers_on_user_id  (user_id)
 #
-
-class Provider < ActiveRecord::Base
-  belongs_to :user
-  validates_presence_of :uid, :name
-  validates_uniqueness_of :uid, scope: :name
-
-  def self.find_for_oauth(auth)
-    find_or_create_by(uid: auth.uid, name: auth.provider)
-  end
-end

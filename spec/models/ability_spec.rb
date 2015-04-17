@@ -1,8 +1,6 @@
 require 'rails_helper'
-require_relative "../cancan_matchers"
 
 RSpec.describe Ability, type: :model do
-
   it 'user can only destroy blogs which he owns' do
     user = create(:user, role: 'user')
     ability = Ability.new(user)
@@ -37,13 +35,13 @@ RSpec.describe Ability, type: :model do
     expect(ability).to have_abilities([:edit, :update], build(:user))
     expect(ability).to not_have_abilities([:create, :destroy], build(:user))
   end
-  
+
   it 'moderator cannot destroy blogs & posts' do
     user = create(:user, role: 'moderator')
     ability = Ability.new(user)
     expect(ability).to have_abilities([:create, :edit, :update], build(:blog))
     expect(ability).to have_abilities([:create, :edit, :update], build(:post))
-    expect(ability).to not_have_abilities( :destroy, build(:blog))
-    expect(ability).to not_have_abilities( :destroy, build(:post))
+    expect(ability).to not_have_abilities(:destroy, build(:blog))
+    expect(ability).to not_have_abilities(:destroy, build(:post))
   end
 end

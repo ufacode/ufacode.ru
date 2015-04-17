@@ -1,39 +1,58 @@
-<p id="notice"><%= notice %></p>
-<h1>Listing Posts</h1>
+<!-- Page Header -->
+<header class="intro-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h1>UfaCode</h1>
+          <hr class="small">
+          <span class="subheading">сообщество уфимских ИТ ремесленников</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Content</th>      
-      <th>Author</th>
-      <th>Blog</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <% if can? :create, Post %>
+        <%= link_to '+ Create post', new_post_path, class: 'btn btn-success pull-right' %>
+      <% end %>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.name %></td>
-        <td><%= image_tag(post.image_url) if post.image? %></td>
-        <td><%= post.content %></td>        
-        <td><%= post.author_id %></td>
-        <td><%= post.blog_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <% if can? :edit, post %>
-          <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <% end %>
-        <% if can? :destroy, post %>
-          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% @posts.each do |post| %>
+        <div class="post-preview">
+          <a href="<%= post_path(post) %>">
+            <h2 class="post-title">
+              <%= post.name %>
+            </h2>
+            <h3 class="post-subtitle">
+              <%= post.content_cut %>
+            </h3>
+          </a>
+          <p class="post-meta">Posted by <%= link_to post.author.name, user_path(post.author) %> on <%= l post.created_at, format: :short %></p>
 
-<br>
-<% if can? :create, Post %>
-    <%= link_to 'New Post', new_post_path %>
-<% end %>
+          <% if can? :edit, post %>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <% end %>
+          <% if can? :destroy, post %>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+
+        </div>
+        <hr>
+      <% end %>
+
+      <!-- Pager -->
+      <%= paginate @posts %>
+<!--
+      <ul class="pager">
+        <li class="next">
+          <a href="#">Older Posts &rarr;</a>
+        </li>
+      </ul>
+-->
+    </div>
+  </div>
+</div>

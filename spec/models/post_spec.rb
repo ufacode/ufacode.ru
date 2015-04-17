@@ -1,12 +1,3 @@
-FactoryGirl.define do
-  factory :post do
-    name  { Faker::Lorem.sentence(rand(5..10)) }
-    content  { Faker::Lorem.sentence( rand(100..1000) ) }
-    association :author, factory: :user, strategy: :build
-    blog
-  end
-end
-
 # == Schema Information
 #
 # Table name: posts
@@ -22,3 +13,18 @@ end
 #  blog_id      :integer
 #  announcement :boolean
 #
+
+require 'rails_helper'
+
+RSpec.describe Post, type: :model do
+  it 'is valid factory for :post' do
+    expect(create(:post)).to be_valid
+  end
+
+  it 'is fill content_cut automatically' do
+    post = create(:post)
+    expect(post.content).not_to be_empty
+    expect(post.content_cut).not_to be_empty
+  end
+
+end
