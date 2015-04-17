@@ -1,0 +1,48 @@
+# Offense count: 1
+# Configuration parameters: AllowSafeAssignment.
+Lint/AssignmentInCondition:
+  Enabled: false
+
+# Offense count: 2
+Lint/HandleExceptions:
+  Enabled: false
+
+# Offense count: 1
+Metrics/AbcSize:
+  Max: 20
+
+# Offense count: 84
+# Configuration parameters: AllowURI, URISchemes.
+Metrics/LineLength:
+  Max: 120
+
+# Offense count: 1
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 21
+
+# Offense count: 6
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Offense count: 19
+Style/Documentation:
+  Enabled: false
+
+AllCops:
+  RunRailsCops: true
+
+  Exclude:
+    - bin/*
+    - spec/*
+    - config/**/*
+    - db/**/*
+    - Gemfile
+    - Guardfile
+
+#Style/StringLiterals:
+#  EnforcedStyle: double_quotes
+#
+#Style/StringLiteralsInInterpolation:
+#  EnforcedStyle: double_quotes

@@ -74,4 +74,5 @@ group :test, :development do
   gem "faker"
   gem "capybara"
   gem "database_cleaner"
+  gem 'rubocop', require: false
 end

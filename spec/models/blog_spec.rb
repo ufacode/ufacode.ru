@@ -18,20 +18,20 @@ RSpec.describe Blog, type: :model do
   end
 
   it 'take uniq blog uri' do
-    blog  = create(:blog, uri: "test")
-    blog2 = build(:blog,  uri: "test")
+    create(:blog, uri: 'test')
+    blog2 = build(:blog,  uri: 'test')
     blog2.valid?
     expect(blog2.errors[:uri]).to include('has already been taken')
   end
 
   it 'take length limit for uri' do
-    blog = build(:blog, uri: "X"*44)
+    blog = build(:blog, uri: 'X' * 44)
     blog.valid?
     expect(blog.errors[:uri]).to include('is too long (maximum is 32 characters)')
   end
 
   it 'take max length limit for blog name' do
-    blog = build(:blog, name: "X"*444)
+    blog = build(:blog, name: 'X' * 444)
     blog.valid?
     expect(blog.errors[:name]).to include('is too long (maximum is 255 characters)')
   end
@@ -44,13 +44,8 @@ end
 #  id          :integer          not null, primary key
 #  name        :string(255)
 #  description :text(65535)
-#  uri         :string(255)
-#  author_id   :integer
+#  uri         :string(32)
+#  user_id     :integer
 #  created_at  :datetime
 #  updated_at  :datetime
-#
-# Indexes
-#
-#  index_blogs_on_author_id  (author_id)
-#  index_blogs_on_uri        (uri)
 #

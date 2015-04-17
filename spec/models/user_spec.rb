@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'take uniq emails' do
-    user = FactoryGirl.create(:user)
+    FactoryGirl.create(:user)
     user2 = FactoryGirl.build(:user)
     user2.valid?
     expect(user2.errors[:email]).to include('has already been taken')

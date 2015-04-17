@@ -2,16 +2,19 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX  = /\Achange@me/
 
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable,  :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,  :recoverable,
+         :rememberable, :trackable, :validatable, :omniauthable
 
-  validates_presence_of :name
-  validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
+  validates :name, presence: true
+  validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
 
   before_validation :set_role
 
-  def self.find_for_oauth(auth, signed_in_resource = nil)
+  has_many :posts, dependent: :destroy
+  has_many :blogs, dependent: :destroy
+  has_many :providers, dependent: :destroy
 
+  def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
     identity = Provider.find_for_oauth(auth)
 
@@ -29,15 +32,15 @@ class User < ActiveRecord::Base
       # user to verify it on the next step via UsersController.finish_signup
       email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
       email = auth.info.email if email_is_verified
-      user = User.where(:email => email).first if email
+      user = User.find_by(email: email) if email
 
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
-            name: auth.extra.raw_info.name,
-            #username: auth.info.nickname || auth.uid,
-            email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-            password: Devise.friendly_token[0,20]
+          name: auth.extra.raw_info.name,
+          # username: auth.info.nickname || auth.uid,
+          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+          password: Devise.friendly_token[0, 20]
         )
         user.skip_confirmation!
         user.save!
@@ -53,13 +56,14 @@ class User < ActiveRecord::Base
   end
 
   def email_verified?
-    self.email && self.email !~ TEMP_EMAIL_REGEX
+    email && email !~ TEMP_EMAIL_REGEX
   end
 
   private
-    def set_role
-      self.role = 'user' unless self.role
-    end
+
+  def set_role
+    self.role = 'user' unless role
+  end
 end
 
 # == Schema Information

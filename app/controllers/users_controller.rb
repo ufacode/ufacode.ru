@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource :only => [:new,:destroy,:edit,:update]
+  load_and_authorize_resource only: [:new, :destroy, :edit, :update]
+
+  def index; end
 
   # GET /users/:id.:format
   def show
