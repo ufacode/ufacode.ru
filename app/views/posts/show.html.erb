@@ -21,9 +21,9 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <%= @post.content %>
       </div>
-      <%= rate_post(@post, current_user, :like) if user_signed_in? %>
+      <%= rate_post_button(@post, current_user, :like) if user_signed_in? %>
       <span class="post-rating"><%= '@post.rating' %></span>
-      <%= rate_post(@post, current_user, :dislike) if user_signed_in? %>
+      <%= rate_post_button(@post, current_user, :dislike) if user_signed_in? %>
     </div>
   </div>
 </article>

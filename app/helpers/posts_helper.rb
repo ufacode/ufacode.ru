@@ -1,6 +1,6 @@
 module PostsHelper
 
-  def rate_post(post, user, action)
+  def rate_post_button(post, user, action)
     # return '' if user.own?(post)
     url = rate_post_path(post, format: :json)
     if action == :like
