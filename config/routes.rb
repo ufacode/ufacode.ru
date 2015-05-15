@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit]
 
   resources :blogs
-  resources :posts
+  resources :posts do
+    post :rate, on: :member
+  end
   post 'markdown/preview'
 end
