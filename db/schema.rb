@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150515141546) do
   add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
 
   create_table "post_ratings", force: :cascade do |t|
-    t.integer  "video_id",   limit: 4
+    t.integer  "user_id",    limit: 4
     t.integer  "post_id",    limit: 4
     t.integer  "amount",     limit: 4
     t.datetime "created_at",           null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150515141546) do
   end
 
   add_index "post_ratings", ["post_id"], name: "index_post_ratings_on_post_id", using: :btree
-  add_index "post_ratings", ["video_id"], name: "index_post_ratings_on_video_id", using: :btree
+  add_index "post_ratings", ["user_id"], name: "index_post_ratings_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "name",         limit: 255
