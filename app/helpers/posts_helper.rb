@@ -1,7 +1,6 @@
 module PostsHelper
 
   def rate_post_button(post, user, action)
-    return '' if user.own?(post) #не показывать голосовалки автору поста
     url = rate_post_path(post, format: :json)
     if action == :like
       updown = 'up'
