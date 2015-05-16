@@ -59,6 +59,10 @@ class User < ActiveRecord::Base
     email && email !~ TEMP_EMAIL_REGEX
   end
 
+  def own?(post)
+    self.id == post.user_id
+  end
+
   private
 
   def set_role
