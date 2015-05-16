@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   validates :name, :blog, :author, presence: true
   belongs_to :author, class_name: 'User', foreign_key: :user_id
   belongs_to :blog
-  has_many :post_ratings
+  has_many :ratings, class_name: 'PostRating', foreign_key: :post_id
   mount_uploader :image, ImageUploader
   before_validation :fill_content_cut
 
@@ -24,12 +24,12 @@ class Post < ActiveRecord::Base
 
   def change_rating(action, user)
     amount = (action == :like) ? 1 : -1
-    return if post_ratings.where(user: user).exists?
+    return if ratings.where(user: user).exists?
 
-    post_ratings.create({
-                          amount: amount,
-                          user:   user
-                        })
+    ratings.create({
+                      amount: amount,
+                      user:   user
+                    })
     update_attributes(rating: rating + amount)
     increment!( (amount > 0) ? :likes : :dislikes)
   end
