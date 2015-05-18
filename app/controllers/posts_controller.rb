@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :rate]
   load_and_authorize_resource only: [:new, :destroy, :edit, :update]
 
   def index
@@ -38,6 +38,19 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
+  end
+
+  def rate
+    if params[:act] == 'like'
+      @post.like!(current_user)
+    else
+      @post.dislike!(current_user)
+    end
+
+    rating_value = @post.rating
+    respond_to do |format|
+      format.json { render json: rating_value }
+    end
   end
 
   private
