@@ -12,6 +12,13 @@
 #  updated_at   :datetime
 #  blog_id      :integer
 #  announcement :boolean
+#  likes        :integer          default("0")
+#  dislikes     :integer          default("0")
+#  rating       :integer          default("0")
+#
+# Indexes
+#
+#  index_posts_on_user_id  (user_id)
 #
 
 require 'rails_helper'
@@ -26,5 +33,4 @@ RSpec.describe Post, type: :model do
     expect(post.content).not_to be_empty
     expect(post.content_cut).not_to be_empty
   end
-
 end
