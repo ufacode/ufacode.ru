@@ -2,7 +2,9 @@ FactoryGirl.define do
   factory :post do
     name  { Faker::Lorem.sentence(rand(5..10)) }
     content  { Faker::Lorem.sentence( rand(100..1000) ) }
-    association :author, factory: :user, strategy: :build
+    association :author, factory: :user#, strategy: :build #makes error when testing posts#show
+                                        # user cant been found in DB
+    rating { rand(1..789) }
     blog
   end
 end
