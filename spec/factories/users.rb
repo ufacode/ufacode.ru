@@ -5,6 +5,14 @@ FactoryGirl.define do
     u.password '100500'
     u.password_confirmation '100500'
   end
+
+  factory :logged_user, class: User do |u|
+    u.name 'Ivik'
+    u.email 'info@mail.com'
+    u.password '100500'
+    u.password_confirmation '100500'
+    u.confirmed_at Time.now
+  end
 end
 
 # == Schema Information
