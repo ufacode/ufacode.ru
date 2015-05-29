@@ -75,4 +75,5 @@ group :test, :development do
   gem "capybara"
   gem "database_cleaner"
   gem 'rubocop', require: false
+  gem 'poltergeist', '~> 1.6.0'
 end

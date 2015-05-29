@@ -20,22 +20,24 @@ feature 'at posts#show page' do
     end
   end
 #########################################################################
-  context 'checking with unlogged user' do
+  context 'checking with logged in user' do
 
     before do
       login_as(logged_user, :scope => :user)
       visit post_path(post)
     end
 
-    it "2 voting elemnts are shown for logged in user" do
+    it "2 voting elements are shown for logged in user" do
       elements = page.all(".post-rate")
       expect(elements.length).to eq(2)
     end
 
-    it "voting changes rating value on page" do
+    it "voting changes rating value on page", js: true do
       prev_post_rating = post.rating
-      page.find(".post-like").click
-      sleep 10
+      element = page.find(".post-like")
+      element.click
+      # sleep 10
+      # p Capybara.save_and_open_page_path
       save_and_open_page
       expect(post.rating).to eq(prev_post_rating + 1)
     end
