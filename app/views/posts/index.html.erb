@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <% if can? :create, Post %>
-        <%= link_to '+ Create post', new_post_path, class: 'btn btn-success pull-right' %>
+        <div class="row">
+          <%= link_to t('posts.create'), new_post_path, class: 'btn btn-success pull-right' %>
+        </div>
       <% end %>
 
       <% @posts.each do |post| %>

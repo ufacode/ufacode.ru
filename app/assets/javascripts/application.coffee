@@ -21,7 +21,11 @@ class @App
 #      data:
 #        authenticity_token: authenticity_token
 
+  always: ->
+    $('textarea').markItUp(initialSettings)
+
   @ready: ->
+    @always()
     unless window.app?
       window.app = new App
       window.app.run()

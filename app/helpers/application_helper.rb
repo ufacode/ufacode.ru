@@ -1,4 +1,30 @@
 module ApplicationHelper
+
+  ##
+  # Show form validation errors
+  def form_errors(form, show_field=true)
+    html = ''
+    if form.errors.any?
+      plural = Russian::pluralize(form.errors.count, 'ошибка', 'ошибки', 'ошибок')
+      html = %Q{
+        <div class="alert">
+          <big>#{form.errors.count} #{plural} в форме:</big>
+          <hr/>
+          <ul>
+      }
+      p form.errors
+      form.errors.each do |field, msg|
+        html += (show_field) ? %Q{<li>поле "#{Profile.human_attribute_name field}" #{msg}</li>} : "<li>#{msg}</li>"
+      end
+      html += %Q{
+        </ul>
+      </div>
+      }
+    end
+    return raw(html)
+  end
+
+
   def markdown(text)
     renderer = Redcarpet::Render::HTML.new(hard_wrap: true, filter_html: true)
     options = {

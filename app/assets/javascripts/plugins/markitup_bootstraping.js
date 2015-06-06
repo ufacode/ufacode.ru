@@ -1,5 +1,5 @@
 $(function() {
-  var initialSettings
+  var initialSettings;
   initialSettings = {
     resizeHandle: 'false',
 
@@ -127,6 +127,4 @@ $(function() {
     $('#codeInsertionModal').hide();
     return false;
   });
-
-  $('textarea').markItUp(initialSettings);  
 });

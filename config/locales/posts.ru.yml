@@ -1,0 +1,13 @@
+ru:
+  posts:
+    create: Создать топик
+    edit: Редактировать топик
+    save: Сохранить
+    blog: В блоге
+  activerecord:
+    attributes:
+      post:
+        name: Заголовок
+        image: Изображение
+        announcement: Объявить на главной странице
+
