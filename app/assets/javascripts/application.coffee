@@ -1,11 +1,12 @@
 #= require jquery
+#= require jquery.turbolinks
 #= require bootstrap-sprockets
 #= require jquery_ujs
+#= require turbolinks
 #= require markitup
 #= require markitup/sets/html/set
 #= require_tree ./plugins/
 #= require_tree ./classes/
-#= require turbolinks
 #= require simple/clean-blog
 #= require_tree .
 
@@ -21,11 +22,12 @@ class @App
 #      data:
 #        authenticity_token: authenticity_token
 
-  always: ->
-    $('textarea').markItUp(initialSettings)
+  @always: ->
+    $("textarea").markItUp(mySettings)
+
 
   @ready: ->
-    @always()
+    App.always()
     unless window.app?
       window.app = new App
       window.app.run()

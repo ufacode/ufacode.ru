@@ -12,9 +12,8 @@ module ApplicationHelper
           <hr/>
           <ul>
       }
-      p form.errors
       form.errors.each do |field, msg|
-        html += (show_field) ? %Q{<li>поле "#{Profile.human_attribute_name field}" #{msg}</li>} : "<li>#{msg}</li>"
+        html += (show_field) ? %Q{<li>поле "#{field}" #{msg}</li>} : "<li>#{msg}</li>"
       end
       html += %Q{
         </ul>
