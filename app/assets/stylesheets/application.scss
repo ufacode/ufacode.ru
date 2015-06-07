@@ -1,5 +1,6 @@
  //= require theme
  //= require simple/clean-blog
  //= require markitup/skins/simple/style
- //= require markitup/sets/markdown/style
+ //= require markitup/sets/html/style
+ //= require_tree ./pages/
  //= require_self

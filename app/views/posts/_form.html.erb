@@ -12,7 +12,7 @@
           <%= f.text_field :name, class: 'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', style: 'width:100%;', rows: 10 %>
+          <%= f.text_area :content, class: 'form-control', style: 'width:100%;', rows: 30 %>
         </div>
         <div class="form-group">
           <%= f.label :blog_id, t('posts.blog') %>
@@ -22,10 +22,12 @@
           <%= f.label :announcement %>
           <%= f.check_box :announcement %>
         </div>
+        <div class="fileUpload btn btn-primary form-group">
+          <span>Загрузить файл</span>
+          <%= f.file_field :image, class: 'upload' %>
+        </div>
         <div class="form-group">
-          <%= f.label :image %><br>
           <%= image_tag(@post.image_url) if @post.image? %>
-          <%= f.file_field :image %>
           <%= f.hidden_field :image_cache %>
         </div>
         <div class="actions">
