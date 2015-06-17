@@ -2,11 +2,15 @@ ru:
   posts:
     create: Создать топик
     edit: Редактировать топик
-    save: Сохранить
     blog: В блоге
+    created: Топик создан
+    updated: Топик обновлен
+    deleted: Топик удален
+    posted_by: Автор
   activerecord:
     attributes:
       post:
+        blog: В блоге
         name: Заголовок
         image: Изображение
         announcement: Объявить на главной странице
