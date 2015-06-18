@@ -1,10 +1,14 @@
 class Post < ActiveRecord::Base
-  validates :name, :blog, :author, presence: true
+  include Sortable
+  before_validation :fill_content_cut
+
+  mount_uploader :image, ImageUploader
+
   belongs_to :author, class_name: 'User', foreign_key: :user_id
   belongs_to :blog
   has_many :ratings, class_name: 'PostRating', foreign_key: :post_id
-  mount_uploader :image, ImageUploader
-  before_validation :fill_content_cut
+
+  validates :name, :blog_id, :author, presence: true
 
   def like!(user)
     change_rating :like, user

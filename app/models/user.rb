@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,  :recoverable,
          :rememberable, :trackable, :validatable, :omniauthable
 
-  validates :name, presence: true
+  validates :name,  presence: true
   validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
 
   before_validation :set_role

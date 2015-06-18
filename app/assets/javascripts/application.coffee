@@ -3,6 +3,8 @@
 #= require bootstrap-sprockets
 #= require jquery_ujs
 #= require turbolinks
+#= require nprogress
+#= require nprogress-turbolinks
 #= require markitup
 #= require markitup/sets/html/set
 #= require_tree ./plugins/

@@ -17,14 +17,10 @@
               <%= post.content_cut %>
             </h3>
           </a>
-          <p class="post-meta">Posted by <%= link_to post.author.name, user_path(post.author) %> on <%= l post.created_at, format: :short %></p>
+          <p class="post-meta"><%= t('posts.posted_by') %> <%= link_to post.author.name, user_path(post.author) %> <%= t('on') %> <%= l post.created_at, format: :short %></p>
 
-          <% if can? :edit, post %>
-            <td><%= link_to 'Edit', edit_post_path(post) %></td>
-          <% end %>
-          <% if can? :destroy, post %>
-            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
+          <%= link_to t('controls.edit'), edit_post_path(post), class: 'label label-primary' if can? :edit, post %>
+          <%= link_to t('controls.destroy'), post, method: :delete, data: { confirm: t('are_u_sure') }, class: 'label label-danger' if can? :destroy, post %>
 
         </div>
         <hr>

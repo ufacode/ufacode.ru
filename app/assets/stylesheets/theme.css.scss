@@ -2,3 +2,19 @@
 @import "bootstrap";
 @import 'plugins/toastr';
 
+.markItUp{
+  width: 100% !important;
+  textarea.markItUpEditor{
+    padding: 20px;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+$nprogress-color: #FF097B;
+$nprogress-height: 3px;
+$nprogress-zindex: 10100;
+
+@import 'nprogress';
+@import 'nprogress-bootstrap';

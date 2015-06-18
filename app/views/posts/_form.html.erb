@@ -1,40 +1,43 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <h1><%= @post.persisted? ? t('posts.edit') : t('posts.create') %></h1>
+  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-      <%= form_for(@post, html: { class: 'form-horizontal' } ) do |f| %>
+    <h1><%= @post.persisted? ? t('posts.edit') : t('posts.create') %></h1>
 
-        <%= form_errors(@post) %>
+    <%= form_for(@post, html: { class: 'form-horizontal' } ) do |f| %>
 
-        <div class="form-group">
-          <%= f.label :name %>
-          <%= f.text_field :name, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', style: 'width:100%;', rows: 30 %>
-        </div>
-        <div class="form-group">
-          <%= f.label :blog_id, t('posts.blog') %>
-          <%= f.collection_select :blog_id, Blog.all, :id, :name, {class: 'form-control'} %>
-        </div>
-        <div class="form-group">
-          <%= f.label :announcement %>
-          <%= f.check_box :announcement %>
-        </div>
-        <div class="fileUpload btn btn-primary form-group">
-          <span>Загрузить файл</span>
-          <%= f.file_field :image, class: 'upload' %>
-        </div>
-        <div class="form-group">
-          <%= image_tag(@post.image_url) if @post.image? %>
+      <%= form_errors(@post) %>
+
+      <div class="form-group">
+        <%= f.label :blog_id, t('activerecord.attributes.post.blog') %>
+        <%= f.collection_select :blog_id, Blog.all, :id, :name, {}, {class: 'form-control'} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :content, class: 'form-control', style: 'width:100%;', rows: 20 %>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="fileUpload btn btn-primary form-group">
+            <span><i class="glyphicon glyphicon-picture"></i> Загрузить изображение</span>
+            <%= f.file_field :image, class: 'upload' %>
+          </div>
+          <%= image_tag @post.image.url(:thumb) if @post.image %>
           <%= f.hidden_field :image_cache %>
         </div>
-        <div class="actions">
-          <%= f.submit t('posts.save'), class: 'btn btn-success' %>
+        <div class="col-lg-6">
+          <div class="form-group pull-right">
+            <%= f.check_box :announcement %>&nbsp;
+            <%= f.label :announcement %>
+          </div>
         </div>
-      <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.submit t('controls.save'), class: 'btn btn-success' %>
+      </div>
+    <% end %>
 
-    </div>
   </div>
 </div>

@@ -3,8 +3,10 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :rate]
   load_and_authorize_resource only: [:new, :destroy, :edit, :update]
 
+  layout 'simple', only: [:show]
+
   def index
-    @posts = Post.page(params[:page]).per(15)
+    @posts = Post.newest.page(params[:page]).per(15)
   end
 
   def show
@@ -19,9 +21,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.author = current_user
-
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      redirect_to @post, notice: t('posts.created')
     else
       render :new
     end
@@ -29,7 +30,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to @post, notice: t('posts.updated')
     else
       render :edit
     end
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: 'Post was successfully destroyed.'
+    redirect_to posts_url, notice: t('posts.deleted')
   end
 
   def rate
