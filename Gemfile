@@ -41,6 +41,7 @@ gem 'nprogress-rails' # turbolinks progressbar
 gem 'closure_tree'
 gem 'jquery-turbolinks'
 gem 'search_cop'
+gem 'font-awesome-rails'
 
 group :development do
   # gem 'net-ssh', "~> 2.7.0"
