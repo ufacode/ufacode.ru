@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :posts do
     post :rate, on: :member
   end
+  resources :comments, only: [:create, :update]
   # post 'markdown/preview'
 
   mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
