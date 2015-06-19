@@ -14,6 +14,35 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+group :development do
+  # gem 'net-ssh', "~> 2.7.0"
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'sextant'
+  gem 'quiet_assets'
+  gem 'bullet'
+  gem 'annotate', '~> 2.6.5'
+end
+
+group :production do
+  gem 'utf8-cleaner'
+end
+
+group :test, :development do
+  gem 'spring'
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+
+  gem "rspec-rails", "~> 3.0"
+  gem "factory_girl_rails", "~> 4.0"
+  gem "faker"
+  gem "capybara"
+  gem "database_cleaner"
+  gem 'rubocop', require: false
+  gem 'poltergeist', '~> 1.6.0'
+  gem 'awesome_print'
+end
+
 # authentication
 gem 'devise'
 gem 'omniauth'
@@ -43,30 +72,3 @@ gem 'jquery-turbolinks'
 gem 'search_cop'
 gem 'font-awesome-rails'
 
-group :development do
-  # gem 'net-ssh', "~> 2.7.0"
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'sextant'
-  gem 'quiet_assets'
-  gem 'bullet'
-  gem 'annotate', '~> 2.6.5'
-end
-
-group :production do
-  gem 'utf8-cleaner'
-end
-
-group :test, :development do
-  gem 'spring'
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-
-  gem "rspec-rails", "~> 3.0"
-  gem "factory_girl_rails", "~> 4.0"
-  gem "faker"
-  gem "capybara"
-  gem "database_cleaner"
-  gem 'rubocop', require: false
-  gem 'poltergeist', '~> 1.6.0'
-end

@@ -49,6 +49,7 @@ GEM
     autoprefixer-rails (5.2.0)
       execjs
       json
+    awesome_print (1.6.1)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -302,6 +303,7 @@ DEPENDENCIES
   acts-as-taggable-on
   annotate (~> 2.6.5)
   autoprefixer-rails
+  awesome_print
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.3)

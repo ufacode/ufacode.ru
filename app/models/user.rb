@@ -5,14 +5,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,  :recoverable,
          :rememberable, :trackable, :validatable, :omniauthable
 
-  validates :name,  presence: true
-  validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
-
   before_validation :set_role
 
   has_many :posts, dependent: :destroy
   has_many :blogs, dependent: :destroy
   has_many :providers, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  validates :name,  presence: true
+  validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
