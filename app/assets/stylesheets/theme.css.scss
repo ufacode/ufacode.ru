@@ -1,6 +1,8 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 @import 'plugins/toastr';
+@import 'simple/variables';
+@import 'font-awesome';
 
 .markItUp{
   width: 100% !important;
@@ -18,3 +20,30 @@ $nprogress-zindex: 10100;
 
 @import 'nprogress';
 @import 'nprogress-bootstrap';
+
+img.preview{
+  border-radius: 15px;
+  border: 4px solid $gray-light;
+  margin-bottom: 15px;
+}
+
+// bg color for head-menu when page scrolled
+nav.is-visible{
+  background: rgba(255,255,255,0.8);
+}
+// logo colors *Code
+nav{
+  .navbar-brand{
+    > b{
+      color: $brand-primary;
+    }
+    > span{
+      color: $brand-light;
+    }
+  }
+}
+.site-heading{
+  > h1{
+    > span{ color: $brand-light; }
+  }
+}
