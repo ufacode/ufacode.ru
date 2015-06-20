@@ -137,8 +137,6 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    markitup-rails (1.1.3)
-      rails (>= 3.1)
     metamagic (3.1.7)
       rails (>= 3.0.0)
     mime-types (2.6.1)
@@ -215,6 +213,10 @@ GEM
     rainbow (2.0.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    redactor-rails (0.5.0)
+      devise
+      mime-types
+      orm_adapter
     redcarpet (3.2.3)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
@@ -323,7 +325,6 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   kaminari
-  markitup-rails
   metamagic
   mini_magick
   mysql2
@@ -335,6 +336,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.1)
   rails_config
+  redactor-rails
   redcarpet
   rspec-rails (~> 3.0)
   rubocop

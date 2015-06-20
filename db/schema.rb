@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619075806) do
+ActiveRecord::Schema.define(version: 20150620150220) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -70,6 +70,23 @@ ActiveRecord::Schema.define(version: 20150619075806) do
   end
 
   add_index "providers", ["user_id"], name: "index_providers_on_user_id", using: :btree
+
+  create_table "redactor_assets", force: :cascade do |t|
+    t.integer  "user_id",           limit: 4
+    t.string   "data_file_name",    limit: 255, null: false
+    t.string   "data_content_type", limit: 255
+    t.integer  "data_file_size",    limit: 4
+    t.integer  "assetable_id",      limit: 4
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width",             limit: 4
+    t.integer  "height",            limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable", using: :btree
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4

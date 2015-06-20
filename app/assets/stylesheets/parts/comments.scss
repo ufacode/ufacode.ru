@@ -2,12 +2,12 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #FFFFFF;
+  border-top: 1px solid #EEE;
 }
-a {
-  color: #82b440;
-  text-decoration: none;
-}
+//a {
+//  color: #82b440;
+//  text-decoration: none;
+//}
 .blog-comment::before,
 .blog-comment::after,
 .blog-comment-form::before,
@@ -17,10 +17,12 @@ a {
   clear: both;
 }
 
+/*
 .blog-comment{
   padding-left: 15%;
   padding-right: 15%;
 }
+*/
 
 .blog-comment ul{
   list-style-type: none;

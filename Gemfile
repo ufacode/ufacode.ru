@@ -63,7 +63,7 @@ gem 'acts-as-taggable-on' # tags for Post
 gem 'metamagic' # meta keywords and description
 gem 'rails_config'
 gem "redcarpet"
-gem 'markitup-rails'
+gem 'redactor-rails'
 gem 'cancancan', '~> 1.10'
 
 gem 'nprogress-rails' # turbolinks progressbar
