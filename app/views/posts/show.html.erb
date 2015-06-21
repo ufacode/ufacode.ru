@@ -46,7 +46,9 @@
         <h3 class="text-success">Comments</h3>
         <hr/>
 
-        <%= render @post.comments %>
+        <ul class="comments" id="comments">
+          <%= render @post.comments %>
+        </ul>
 
         <ul class="comments">
           <li class="clearfix">
@@ -83,6 +85,8 @@
             </ul>
           </li>
         </ul>
+
+        <%= render 'comments/form', comment: @comment, post: @post %>
 
       </div>
     </div>

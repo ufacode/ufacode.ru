@@ -15,6 +15,7 @@
 class @App
   constructor: ->
     @notification = new Notification
+    @comments     = new Comments
 
   run: ->
     @setup_ajax()
