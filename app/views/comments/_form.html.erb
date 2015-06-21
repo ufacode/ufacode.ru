@@ -4,7 +4,7 @@
     <%= f.hidden_field :parent_id %>
     <%= f.hidden_field :post_id, value: post.id %>
     <div class="form-group">
-      <%= f.text_area :content, class: 'redactor' %>
+      <%= f.text_area :content, class: 'redactor', rows: 5 %>
     </div>
     <div class="form-group">
       <%= f.submit t('comments.add'), class: 'btn btn-success' %>

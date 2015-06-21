@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150620150220) do
+ActiveRecord::Schema.define(version: 20150621093155) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20150620150220) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comment_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   limit: 4, null: false
+    t.integer "descendant_id", limit: 4, null: false
+    t.integer "generations",   limit: 4, null: false
+  end
+
+  add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "comment_anc_desc_idx", unique: true, using: :btree
+  add_index "comment_hierarchies", ["descendant_id"], name: "comment_desc_idx", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "parent_id",  limit: 4

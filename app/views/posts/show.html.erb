@@ -50,6 +50,7 @@
           <%= render @post.comments %>
         </ul>
 
+<!--
         <ul class="comments">
           <li class="clearfix">
             <img src="http://bootdey.com/img/Content/user_1.jpg" class="avatar" alt="">
@@ -85,8 +86,11 @@
             </ul>
           </li>
         </ul>
+-->
 
-        <%= render 'comments/form', comment: @comment, post: @post %>
+        <div id="comment_new">
+          <%= render 'comments/form', comment: @comment, post: @post %>
+        </div>
 
       </div>
     </div>

@@ -1,7 +1,9 @@
 <li class="clearfix">
   <img src="http://bootdey.com/img/Content/user_1.jpg" class="avatar" alt="">
   <div class="post-comments">
-    <p class="meta"><%= l comment.created_at, format: :short %> <a href="#"><%= comment.author.name %></a> says: <i class="pull-right"><a href="#"><small>Reply</small></a></i></p>
+    <p class="meta"><%= l comment.created_at, format: :short %> <a href="#"><%= comment.author.name %></a> says: <i class="pull-right"><a href="#" class="reply" data-id="<%= comment.id %>"><small><%= t('comments.reply') %></small></a></i></p>c
     <p><%= clean_comment comment.content %></p>
   </div>
+  <div id="comment_reply<%= comment.id %>" class="comment-reply"></div>
+  <ul class="comments" id="comments<%= comment.id %>"><%= render comment.children if comment.children.any? %></ul>
 </li>
