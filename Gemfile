@@ -14,35 +14,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# authentication
-gem 'devise'
-gem 'omniauth'
-# gem 'omniauth-twitter'
-# gem 'omniauth-facebook'
-# gem 'omniauth-linkedin'
-gem 'omniauth-vkontakte'
-gem 'omniauth-github'
-
-gem 'russian' # russian lang
-gem 'kaminari' # paginations
-gem 'mini_magick' # image processing
-gem 'carrierwave' # file upload
-gem 'aasm' # state machine
-gem 'bootstrap-sass', '~> 3.3' # bootstrap
-gem 'autoprefixer-rails' # css prefixer
-gem 'acts-as-taggable-on' # tags for Post
-gem 'metamagic' # meta keywords and description
-gem 'rails_config'
-gem "redcarpet"
-gem 'markitup-rails'
-gem 'cancancan', '~> 1.10'
-
-gem 'nprogress-rails' # turbolinks progressbar
-gem 'closure_tree'
-gem 'jquery-turbolinks'
-gem 'search_cop'
-gem 'font-awesome-rails'
-
 group :development do
   # gem 'net-ssh', "~> 2.7.0"
   gem 'better_errors'
@@ -69,4 +40,35 @@ group :test, :development do
   gem "database_cleaner"
   gem 'rubocop', require: false
   gem 'poltergeist', '~> 1.6.0'
+  gem 'awesome_print'
 end
+
+# authentication
+gem 'devise'
+gem 'omniauth'
+# gem 'omniauth-twitter'
+# gem 'omniauth-facebook'
+# gem 'omniauth-linkedin'
+gem 'omniauth-vkontakte'
+gem 'omniauth-github'
+
+gem 'russian' # russian lang
+gem 'kaminari' # paginations
+gem 'mini_magick' # image processing
+gem 'carrierwave' # file upload
+gem 'aasm' # state machine
+gem 'bootstrap-sass', '~> 3.3' # bootstrap
+gem 'autoprefixer-rails' # css prefixer
+gem 'acts-as-taggable-on' # tags for Post
+gem 'metamagic' # meta keywords and description
+gem 'rails_config'
+gem "redcarpet"
+gem 'redactor-rails'
+gem 'cancancan', '~> 1.10'
+
+gem 'nprogress-rails' # turbolinks progressbar
+gem 'closure_tree'
+gem 'jquery-turbolinks'
+gem 'search_cop'
+gem 'font-awesome-rails'
+

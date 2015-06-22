@@ -5,8 +5,8 @@
 #= require turbolinks
 #= require nprogress
 #= require nprogress-turbolinks
-#= require markitup
-#= require markitup/sets/html/set
+#= require redactor-rails/redactor.min
+#= require ./redactor-rails/index
 #= require_tree ./plugins/
 #= require_tree ./classes/
 #= require simple/clean-blog
@@ -15,6 +15,7 @@
 class @App
   constructor: ->
     @notification = new Notification
+    @comments     = new Comments
 
   run: ->
     @setup_ajax()
@@ -25,7 +26,6 @@ class @App
 #        authenticity_token: authenticity_token
 
   @always: ->
-    $("textarea").markItUp(mySettings)
 
 
   @ready: ->

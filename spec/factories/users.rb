@@ -1,17 +1,9 @@
 FactoryGirl.define do
-  factory :user do |u|
-    u.name 'MpaK'
-    u.email 'info@mrak7.com'
-    u.password '100500'
-    u.password_confirmation '100500'
-  end
-
-  factory :logged_user, class: User do |u|
-    u.name 'Ivik'
-    u.email 'info@mail.com'
-    u.password '100500'
-    u.password_confirmation '100500'
-    u.confirmed_at Time.now
+  factory :user do
+    name  { Faker::Internet.user_name }
+    email { Faker::Internet.email }
+    password  { Faker::Internet.password(8) }
+    confirmed_at Time.now
   end
 end
 

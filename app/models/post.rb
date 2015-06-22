@@ -6,7 +6,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :author, class_name: 'User', foreign_key: :user_id
   belongs_to :blog
-  has_many :ratings, class_name: 'PostRating', foreign_key: :post_id
+  has_many   :ratings, class_name: 'PostRating', foreign_key: :post_id
+  has_many   :comments, dependent: :destroy
 
   validates :name, :blog_id, :author, presence: true
 

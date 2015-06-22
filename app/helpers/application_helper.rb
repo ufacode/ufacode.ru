@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def clean_post(html)
+    sanitize html, tags: %w(strong em a bold), attributes: %w(href)
+  end
+
+  def clean_comment(html)
+    sanitize html, tags: %w(strong em a p br bold img strike blockquote cite b u), attributes: %w(href src)
+  end
+
   ##
   # Show form validation errors
   def form_errors(form, show_field=true)
