@@ -13,7 +13,7 @@ window.init_redactor = function () {
         buttonSource: true,
         visual: true,
         buttonsHide: [],
-        minHeight: 300,
+        minHeight: 150,
         //buttons: [formatting', 'bold', 'italic'],
         //"plugins": ['fontsize', 'fontcolor', 'fontfamily', 'fullscreen', 'textdirection', 'clips'],
         "imageUpload": "/redactor_rails/pictures?" + params,

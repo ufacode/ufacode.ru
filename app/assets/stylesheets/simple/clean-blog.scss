@@ -230,25 +230,25 @@ hr.small {
 // Post Preview Pages
 
 .post-preview {
-  > a {
+  a {
     color: $gray-dark;
     &:hover,
     &:focus {
       text-decoration: none;
       color: $brand-primary;
     }
-    > .post-title {
+    .post-title {
       font-size: 30px;
-      margin-top: 30px;
+      margin-top: 0;
       margin-bottom: 10px;
     }
-    > .post-subtitle {
+    .post-subtitle {
       margin: 0;
       font-weight: 300;
       margin-bottom: 10px;
     }
   }
-  > .post-meta {
+  .post-meta {
     color: $gray;
     font-size: 18px;
     font-style: italic;
@@ -264,8 +264,8 @@ hr.small {
     }
   }
   @media only screen and (min-width: 768px) {
-    > a {
-      > .post-title {
+    a {
+      .post-title {
         font-size: 36px;
       }
     }
