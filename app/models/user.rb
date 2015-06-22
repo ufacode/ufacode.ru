@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   validates :name,  presence: true
   validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
 
+  def full_name
+    name || email
+  end
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
     identity = Provider.find_for_oauth(auth)

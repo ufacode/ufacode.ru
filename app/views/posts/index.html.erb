@@ -20,9 +20,7 @@
                 </h2>
                 <%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_post_path(post), class: 'label label-primary', title: t('controls.edit') if can? :edit, post %>
                 <%= link_to '<i class="fa fa-trash"></i>'.html_safe, post, method: :delete, data: { confirm: t('are_u_sure') }, class: 'label label-danger', title: t('controls.destroy') if can? :destroy, post %>
-                <h3 class="post-subtitle">
-                  <%= post.content_cut %>
-                </h3>
+                <h3 class="post-subtitle"><%= post.content_cut %></h3>
               </div>
             </a>
           </div>
