@@ -1,12 +1,15 @@
 class @Comments
   constructor: ->
-    @new_comment = $('#comment_new')
-    @form    = $('#comment_form')
-    @content = $('#comment_content')
     $(document).on 'submit', '#comment_form', @comment_submit.bind(@)
     $(document).on 'click', '.reply', @comment_reply
 
+  vars: ->
+    @new_comment = $('#comment_new')
+    @form    = $('#comment_form')
+    @content = $('#comment_content')
+
   comment_submit: (e)->
+    @vars()
     e.preventDefault()
 
     if @content.val() == ''
