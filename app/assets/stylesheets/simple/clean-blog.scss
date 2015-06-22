@@ -86,17 +86,21 @@ hr.small {
       padding: 20px;
       &:hover,
       &:focus {
-        color: $white-faded;
+        color: $brand-primary;
       }
     }
     .nav {
       li {
         a {
+          > i{
+            color: $brand-light;
+          }
           color: white;
           padding: 20px;
           &:hover,
           &:focus {
-            color: $white-faded;
+            color: $brand-light;
+            background: $darkest-color;
           }
         }
       }
@@ -243,9 +247,8 @@ hr.small {
       margin-bottom: 10px;
     }
     .post-subtitle {
-      margin: 0;
+      margin: 0 0 10px 0;
       font-weight: 300;
-      margin-bottom: 10px;
     }
   }
   .post-meta {
