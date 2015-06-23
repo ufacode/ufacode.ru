@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <h1>Профиль</h1>
+
+    <div class="row">
+      <%= link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-success pull-right' if can? :edit, @user %>
+    </div>
+    <div class="row">
+      <% if @user.role == 'banned' %>
+        <%= link_to "Разбанить", ban_user_path(@user), method: :post, class: 'btn btn-primary pull-right' if can? :ban, @user %>
+      <% else %>
+        <%= link_to "Забанить",  ban_user_path(@user), method: :post, class: 'btn btn-danger pull-right' if can? :ban, @user %>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <%= image_tag @user.image.url(:thumb) %>
+      </div>
+
+      <div class="col-md-9">
+        <strong>Имя:</strong>
+        <%= @user.name %>
+        <br/>
+        <strong>Email:</strong>
+        <%= @user.email %>
+
+      </div>
+    </div>
+  </div>
+</div>

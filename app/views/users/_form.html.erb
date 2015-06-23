@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+
+    <h1>Редактирование пользователя</h1>
+
+    <%= form_for(@user, html: { role: 'form', class: 'form form-horizontal' } ) do |f| %>
+
+      <%= form_errors(@user) %>
+
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="fileUpload btn btn-primary form-group">
+            <span><i class="glyphicon glyphicon-picture"></i> Загрузить изображение</span>
+            <%= f.file_field :image, class: 'upload' %>
+          </div>
+          <%= image_tag @user.image.url(:thumb) if @user.image %>
+          <%= f.hidden_field :image_cache %>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div class="form-group">
+        <%= f.submit t('controls.save'), class: 'btn btn-success' %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

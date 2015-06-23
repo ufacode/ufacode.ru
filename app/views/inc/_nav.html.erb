@@ -26,7 +26,7 @@
         </li>
         <% if user_signed_in? %>
           <li>
-            <a href="#profile"><i class="fa fa-user"></i> <%= current_user.full_name %></a>
+            <%= link_to current_user do %><i class="fa fa-user"></i> <%= current_user.full_name %><% end %>
           </li>
           <li>
             <%= link_to destroy_user_session_path, method: :destroy do %><i class="fa fa-sign-out"></i> <%= t('users.signout') %><% end %>
@@ -45,4 +45,3 @@
   </div>
   <!-- /.container -->
 </nav>
-

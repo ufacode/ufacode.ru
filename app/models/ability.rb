@@ -38,6 +38,7 @@ class Ability
       can :read, :all
     elsif user.role == 'user'
       can [:edit, :update, :destroy], [Blog, Post], user_id: user.id # @todo add Comment model
+      can [:edit, :update], [User], id: user.id
       can :create, [Blog, Post] # @todo add Comment model
       can :read, :all
     elsif user.role == 'banned'
