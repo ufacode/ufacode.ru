@@ -1,5 +1,6 @@
 module PostsHelper
-
+  include ActsAsTaggableOn::TagsHelper
+  
   def rate_post_button(post, user, action)
     url = rate_post_path(post, format: :json)
     if action == :like

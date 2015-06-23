@@ -11,6 +11,10 @@ class Post < ActiveRecord::Base
 
   validates :name, :blog_id, :author, presence: true
 
+  scope :filter_by_tag, ->(tag) { tagged_with(tag) if tag }
+
+  acts_as_taggable
+
   def like!(user)
     change_rating :like, user
   end
@@ -57,4 +61,8 @@ end
 #  likes        :integer          default(0)
 #  dislikes     :integer          default(0)
 #  rating       :integer          default(0)
+#
+# Indexes
+#
+#  index_posts_on_user_id  (user_id)
 #

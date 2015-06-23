@@ -7,6 +7,16 @@ FactoryGirl.define do
     rating { rand(1..789) }
     blog
   end
+
+  factory :post_with_tags, class: Post do
+    name  { Faker::Lorem.sentence(rand(5..10)) }
+    content  { Faker::Lorem.sentence( rand(100..1000) ) }
+    association :author, factory: :user#, strategy: :build #makes error when testing posts#show
+                                        # user cant been found in DB
+    rating { rand(1..789) }
+    tag_list "tag1, tag2, tag3"
+    blog
+  end
 end
 
 # == Schema Information
@@ -26,4 +36,8 @@ end
 #  likes        :integer          default(0)
 #  dislikes     :integer          default(0)
 #  rating       :integer          default(0)
+#
+# Indexes
+#
+#  index_posts_on_user_id  (user_id)
 #
