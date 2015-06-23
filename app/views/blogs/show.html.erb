@@ -1,24 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <% if can? :create, Post %>
+        <div class="row">
+          <%= link_to t('posts.create'), new_post_path, class: 'btn btn-success pull-right' %>
+        </div>
+      <% end %>
 
-<p>
-  <strong>Название:</strong>
-  <%= @blog.name %>
-</p>
+      <h1><%= @blog.name %></h1>
+      <p>
+        <%= @blog.description %>
+      </p>
 
-<p>
-  <strong>Описание:</strong>
-  <%= @blog.description %>
-</p>
+      <% @posts.each do |post| %>
+        <div class="post-preview">
+          <div class="row">
+            <a href="<%= post_path(post) %>">
+              <div class="col-lg-3 text-center">
+                <%= image_tag post.image.url(:preview), class: 'preview' %>
+              </div>
+              <div class="col-lg-9">
+                <h2 class="post-title">
+                  <%= post.name %>
+                </h2>
+                <%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_post_path(post), class: 'label label-primary', title: t('controls.edit') if can? :edit, post %>
+                <%= link_to '<i class="fa fa-trash"></i>'.html_safe, post, method: :delete, data: { confirm: t('are_u_sure') }, class: 'label label-danger', title: t('controls.destroy') if can? :destroy, post %>
+                <h3 class="post-subtitle"><%= post.content_cut %></h3>
+              </div>
+            </a>
+          </div>
+          <p class="post-meta"><%= t('posts.posted_by') %> <%= link_to post.author.name, user_path(post.author) %> <%= t('on') %> <%= l post.created_at, format: :short %></p>
+        </div>
+        <hr>
+      <% end %>
 
-<p>
-  <strong>Адрес:</strong>
-  <%= @blog.uri %>
-</p>
+      <%= paginate @posts %>
 
-<p>
-  <strong>Автор:</strong>
-  <%= @blog.author_id %>
-</p>
-
-<%= link_to 'Изм', edit_blog_path(@blog) %> |
-<%= link_to 'Назад', blogs_path %>
+    </div>
+  </div>
+</div>

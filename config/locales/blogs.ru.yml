@@ -1,0 +1,13 @@
+ru:
+  blogs:
+    create: Создать блог
+    edit: Редактировать блог
+    created: блог создан
+    updated: блог обновлен
+    deleted: блог удален
+  activerecord:
+    attributes:
+      blog:
+        name: Заголовок
+        description: Описание
+        uri: URL
