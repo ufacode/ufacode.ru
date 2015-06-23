@@ -8,6 +8,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @posts = @blog.posts.newest.page(params[:page]).per(15)
   end
 
   def new
@@ -21,7 +22,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     @blog.author = current_user
     if @blog.save
-      redirect_to @blog, notice: 'Blog was successfully created.'
+      redirect_to @blog, notice: t('blogs.created')
     else
       render :new
     end
@@ -29,7 +30,7 @@ class BlogsController < ApplicationController
 
   def update
     if @blog.update(blog_params)
-      redirect_to @blog, notice: 'Blog was successfully updated.'
+      redirect_to @blog, notice: t('blogs.updated')
     else
       render :edit
     end
@@ -37,7 +38,7 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-    redirect_to blogs_url, notice: 'Blog was successfully destroyed.'
+    redirect_to blogs_url, notice: t('blogs.deleted')
   end
 
   private

@@ -3,7 +3,7 @@
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <h1>Блоги</h1>
 
-      <%= link_to 'Новый блог', new_blog_path, class: 'btn btn-success pull-right' if can? :create, Blog %>
+      <%= link_to t('blogs.create'), new_blog_path, class: 'btn btn-success pull-right' if can? :create, Blog %>
 
       <ul>
         <% @blogs.each do |blog| %>
@@ -20,4 +20,3 @@
     </div>
   </div>
 </div>
-
