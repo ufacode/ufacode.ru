@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource only: [:new, :destroy, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :ban]
+  load_and_authorize_resource only: [:new, :destroy, :edit, :update, :ban]
 
-  def index; end
+  def index
+    @users = User.alphabetical.page(params[:page]).per(50)
+  end
 
   # GET /users/:id.:format
   def show
@@ -54,6 +56,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def ban
+    if @user.role == 'user'
+      @user.update(role: 'banned')
+      redirect_to @user, notice: "user забанен"
+    else
+      @user.update(role: 'user')
+      redirect_to @user, notice: "user разбанен"
+    end
+  end
+
+
   private
 
   def set_user
@@ -61,7 +74,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    accessible = [:name, :email] # extend with your own params
+    accessible = [:name, :email, :image] # extend with your own params
     accessible << [:password, :password_confirmation] unless params[:user][:password].blank?
     params.require(:user).permit(accessible)
   end

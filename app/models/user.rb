@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Sortable
+  
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX  = /\Achange@me/
 
@@ -6,6 +8,8 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable, :omniauthable
 
   before_validation :set_role
+
+  mount_uploader :image, AvatarUploader
 
   has_many :posts, dependent: :destroy
   has_many :blogs, dependent: :destroy
