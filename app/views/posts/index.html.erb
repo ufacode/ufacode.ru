@@ -7,6 +7,12 @@
         </div>
       <% end %>
 
+      <div class="tag_cloud">
+        <% tag_cloud(Post.tag_counts_on(:tags), %w(small-tag medium-tag large-tag)) do |tag, css_class| %>
+          <%= link_to tag.name, posts_path(tag: tag.name), class: css_class %>
+        <% end %>
+      </div>
+
       <% @posts.each do |post| %>
         <div class="post-preview">
           <div class="row">

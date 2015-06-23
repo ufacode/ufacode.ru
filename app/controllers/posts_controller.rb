@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   layout 'simple', only: [:show]
 
   def index
-    @posts = Post.newest.page(params[:page]).per(15)
+    @posts = Post.filter_by_tag(params[:tag]).newest.page(params[:page]).per(15)
   end
 
   def show
@@ -62,6 +62,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :content, :image, :blog_id)
+    params.require(:post).permit(:name, :content, :image, :blog_id, :tag_list)
   end
 end
