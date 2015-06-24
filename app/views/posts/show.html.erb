@@ -5,9 +5,9 @@
         <div class="post-heading">
           <h1><%= @post.name %></h1>
 
-          <h2 class="subheading"><%= @post.content_cut %></h2>
-          <span class="meta">Posted by <%= link_to @post.author.name, user_path(@post.author) %>
-            on <%= l @post.created_at, format: :short %></span>
+          <h2 class="subheading"><%= clean_post @post.content_cut %></h2>
+          <span class="meta">
+            <%= t('posts.posted_by') %> <%= link_to @post.author.name, user_path(@post.author) %> <%= t('on') %> <%= l @post.created_at, format: :short %></span>
         </div>
       </div>
     </div>
@@ -18,14 +18,15 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="tags">
-          <%= raw @post.tag_list.map { |t| link_to t, posts_path(tag: t) }.join(', ') %>
-        </div>
 
-        <%= @post.content %>
+        <%= clean_post @post.content %>
 
         <hr/>
         <div>
+          <p class="tags">
+            <%= show_tags(@post) %>
+          </p>
+
           <div class="post-rating">
             <%= rate_post_button(@post, current_user, :like) if user_signed_in? %>
             <span class="post-rating"><%= @post.rating %></span>
@@ -47,7 +48,7 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 cl-md-offset-1">
       <div class="blog-comment">
-        <h3 class="text-success">Comments</h3>
+        <h3 class="text-success"><%= t('comments.title') %></h3>
         <hr/>
 
         <ul class="comments" id="comments">

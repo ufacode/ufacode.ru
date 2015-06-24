@@ -1,5 +1,6 @@
 ru:
   comments:
+    title: Комментарии
     add: Добавить
     signin_before: Вам надо <a href="%{signup_link}">зарегистрироваться</a> или <a href="%{signin_link}">войти под своим аккаунтом</a> прежде чем оставить комментарий.
     reply: Ответить
