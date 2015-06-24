@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   end
   resources :comments, only: [:create, :update]
 
+  resources :search, only: [:index, :create], as: :searchs
+
   mount RedactorRails::Engine => '/redactor_rails'
 end

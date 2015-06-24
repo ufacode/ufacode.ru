@@ -15,6 +15,11 @@ class Post < ActiveRecord::Base
 
   acts_as_taggable
 
+  searchable do
+    text :name, :content
+    integer :blog_id
+  end
+
   def like!(user)
     change_rating :like, user
   end
