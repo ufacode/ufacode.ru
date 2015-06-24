@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def clean_post(html)
-    sanitize html, tags: %w(strong em a bold), attributes: %w(href)
+    sanitize html, tags: %w(strong em a p br bold img strike blockquote cite b u table tr td video iframe pre code), attributes: %w(href src class rel target)
   end
 
   def clean_comment(html)
