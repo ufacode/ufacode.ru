@@ -69,6 +69,7 @@ gem 'cancancan', '~> 1.10'
 gem 'nprogress-rails' # turbolinks progressbar
 gem 'closure_tree'
 gem 'jquery-turbolinks'
-gem 'search_cop'
+# gem 'search_cop'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 gem 'font-awesome-rails'
-
