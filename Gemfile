@@ -47,10 +47,12 @@ end
 gem 'devise'
 gem 'omniauth'
 # gem 'omniauth-twitter'
-# gem 'omniauth-facebook'
+gem 'omniauth-facebook'
 # gem 'omniauth-linkedin'
 gem 'omniauth-vkontakte'
 gem 'omniauth-github'
+gem "koala", "~> 2.0"
+# gem 'fb_graph'
 
 gem 'russian' # russian lang
 gem 'kaminari' # paginations

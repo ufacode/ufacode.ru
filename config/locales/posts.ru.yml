@@ -7,6 +7,8 @@ ru:
     updated: Топик обновлен
     deleted: Топик удален
     posted_by: Автор
+    shared: Топик размещен в соц. сети
+    already_shared: Топик уже был размещен в соц. сети
   activerecord:
     attributes:
       post:

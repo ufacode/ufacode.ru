@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :rate]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :rate, :share]
   load_and_authorize_resource only: [:new, :destroy, :edit, :update]
 
   layout 'simple', only: [:show]
@@ -52,6 +52,14 @@ class PostsController < ApplicationController
     rating_value = @post.rating
     respond_to do |format|
       format.json { render json: rating_value }
+    end
+  end
+
+  def share
+    if Post::Share.rupor(@post, params[:social])
+      redirect_to @post, notice: t('posts.shared')
+    else
+      redirect_to @post, alert: t('posts.already_shared')
     end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621093155) do
+ActiveRecord::Schema.define(version: 20150627090827) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 20150621093155) do
 
   add_index "post_ratings", ["post_id"], name: "index_post_ratings_on_post_id", using: :btree
   add_index "post_ratings", ["user_id"], name: "index_post_ratings_on_user_id", using: :btree
+
+  create_table "post_shares", force: :cascade do |t|
+    t.integer  "post_id",    limit: 4
+    t.integer  "social",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "post_shares", ["post_id"], name: "index_post_shares_on_post_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -145,5 +154,6 @@ ActiveRecord::Schema.define(version: 20150621093155) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "post_shares", "posts"
   add_foreign_key "providers", "users"
 end

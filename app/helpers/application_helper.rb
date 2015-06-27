@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def clean_post(html)
     sanitize html, tags: %w(strong em a p br bold img strike blockquote cite b u table tr td video iframe pre code), attributes: %w(href src class rel target)
   end
@@ -10,27 +9,26 @@ module ApplicationHelper
 
   ##
   # Show form validation errors
-  def form_errors(form, show_field=true)
+  def form_errors(form, show_field = true)
     html = ''
     if form.errors.any?
-      plural = Russian::pluralize(form.errors.count, 'ошибка', 'ошибки', 'ошибок')
-      html = %Q{
+      plural = Russian.pluralize(form.errors.count, 'ошибка', 'ошибки', 'ошибок')
+      html = %(
         <div class="alert">
           <big>#{form.errors.count} #{plural} в форме:</big>
           <hr/>
           <ul>
-      }
+            )
       form.errors.each do |field, msg|
-        html += (show_field) ? %Q{<li>поле "#{field}" #{msg}</li>} : "<li>#{msg}</li>"
+        html += (show_field) ? %(<li>поле "#{field}" #{msg}</li>) : "<li>#{msg}</li>"
       end
-      html += %Q{
+      html += %(
         </ul>
       </div>
-      }
+            )
     end
-    return raw(html)
+    raw(html)
   end
-
 
   def markdown(text)
     renderer = Redcarpet::Render::HTML.new(hard_wrap: true, filter_html: true)
@@ -54,7 +52,7 @@ module ApplicationHelper
       out = '<script type="text/javascript" data-turbolinks-eval="always">'
       flash.each do |f|
         type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'success')
-        out << %Q{ toastr['#{type}']('#{f[1]}'); }
+        out << %{ toastr['#{type}']('#{f[1]}'); }
       end
       out << '</script>'
     end
