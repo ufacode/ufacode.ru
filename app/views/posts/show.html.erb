@@ -32,9 +32,19 @@
             <span class="post-rating"><%= @post.rating %></span>
             <%= rate_post_button(@post, current_user, :dislike) if user_signed_in? %>
           </div>
-          <div class="post-share">
 
-          </div>
+          <ul class="post-rupor">
+            <li>
+              <%= button_to share_post_path(@post, social: :facebook), class: 'btn btn-primary rupor-facebook', method: :post do %>
+                <i class="fa fa-facebook-official"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= button_to share_post_path(@post, social: :twitter), class: 'btn btn-primary rupor-twitter', method: :post do %>
+                <i class="fa fa-twitter"></i>
+              <% end %>
+            </li>
+          </ul>
         </div>
 
       </div>

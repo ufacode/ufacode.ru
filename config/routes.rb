@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :blogs
   resources :posts do
-    post :rate, on: :member
+    post :rate, :share, on: :member
   end
   resources :comments, only: [:create, :update]
 

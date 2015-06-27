@@ -59,13 +59,12 @@ class UsersController < ApplicationController
   def ban
     if @user.role == 'user'
       @user.update(role: 'banned')
-      redirect_to @user, notice: "user забанен"
+      redirect_to @user, notice: 'user забанен'
     else
       @user.update(role: 'user')
-      redirect_to @user, notice: "user разбанен"
+      redirect_to @user, notice: 'user разбанен'
     end
   end
-
 
   private
 

@@ -6,8 +6,9 @@ class Post < ActiveRecord::Base
 
   belongs_to :author, class_name: 'User', foreign_key: :user_id
   belongs_to :blog
-  has_many   :ratings, class_name: 'PostRating', foreign_key: :post_id
-  has_many   :comments, dependent: :destroy
+  has_many :ratings, class_name: 'PostRating', foreign_key: :post_id
+  has_many :comments, dependent: :destroy
+  has_many :shares, class_name: 'Post::Share', dependent: :destroy
 
   validates :name, :blog_id, :author, presence: true
 
@@ -31,21 +32,17 @@ class Post < ActiveRecord::Base
   private
 
   def fill_content_cut
-    unless content.empty?
-      self.content_cut = content.split.first(15).join(' ')
-    end
+    self.content_cut = content.split.first(15).join(' ') unless content.empty?
   end
 
   def change_rating(action, user)
     amount = (action == :like) ? 1 : -1
     return if ratings.where(user: user).exists?
 
-    ratings.create({
-                      amount: amount,
-                      user:   user
-                    })
+    ratings.create(amount: amount,
+                   user:   user)
     update_attributes(rating: rating + amount)
-    increment!( (amount > 0) ? :likes : :dislikes)
+    increment!((amount > 0) ? :likes : :dislikes)
   end
 end
 
@@ -66,8 +63,4 @@ end
 #  likes        :integer          default(0)
 #  dislikes     :integer          default(0)
 #  rating       :integer          default(0)
-#
-# Indexes
-#
-#  index_posts_on_user_id  (user_id)
 #

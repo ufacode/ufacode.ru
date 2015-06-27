@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     if comment.save
       render comment
     else
-      render json: {errors: comment.errors}, status: :unprocessable_entity
+      render json: { errors: comment.errors }, status: :unprocessable_entity
     end
   end
 
@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:content, :post_id, :parent_id)
   end
