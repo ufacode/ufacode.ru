@@ -1,5 +1,7 @@
 @import 'simple/variables';
 
+// users/indes
+
 .widget .panel, .widget.panel {
   overflow: hidden;
 }
@@ -48,4 +50,35 @@
 
 .panel>.list-group .list-group-item {
   border-top: 0;
+}
+
+// user/show
+
+.panel-shadow {
+  background: $darkest-color;
+  box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+
+.profile-widget {
+  position: relative;
+}
+.profile-widget .image-container {
+  background-size: cover;
+  background-position: center;
+  padding: 190px 0 20px;
+}
+.profile-widget .image-container .profile-background {
+  width: 100%;
+  height: auto;
+}
+.profile-widget .image-container .avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto -60px;
+  display: block;
+}
+.profile-widget .details {
+  padding: 50px 15px 15px;
+  text-align: center;
 }

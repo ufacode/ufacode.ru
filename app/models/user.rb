@@ -9,15 +9,19 @@ class User < ActiveRecord::Base
 
   before_validation :set_role
 
-  mount_uploader :image, AvatarUploader
+  mount_uploader :image,     AvatarUploader
+  mount_uploader :wallpaper, ImageUploader
 
-  has_many :posts, dependent: :destroy
-  has_many :blogs, dependent: :destroy
+
+  has_many :posts,     dependent: :destroy
+  has_many :blogs,     dependent: :destroy
   has_many :providers, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments,  dependent: :destroy
 
   validates :name,  presence: true
   validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
+
+  enum sex: { male: 1, female: 2 }
 
   def full_name
     name || email
@@ -99,6 +103,9 @@ end
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
 #  role                   :string(255)
+#  sex                    :integer          default(1)
+#  description            :text(65535)
+#  wallpaper              :string(255)
 #
 # Indexes
 #
