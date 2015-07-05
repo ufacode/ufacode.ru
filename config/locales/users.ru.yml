@@ -3,3 +3,14 @@ ru:
     signout: Выйти
     signin: Войти
     register: Зарегистрироваться
+    new_password: Новый пароль
+    name: Имя или ник
+    sex: Пол
+    description: О себе
+    man: Мужчина
+    woman: Женщина
+    upload_avatar: Загрузить аватар
+    upload_wallpaper: Загрузить обои
+
+    updated: Профиль обновлен
+
