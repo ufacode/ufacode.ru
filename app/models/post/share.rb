@@ -6,11 +6,7 @@ class Post::Share < ActiveRecord::Base
 
   enum social: [:twitter, :facebook, :google_plus, :vkontakte]
 
-  def twitter; end
-
   def google_plus; end
-
-  def vkontakte; end
 
   def self.rupor(post, social)
     social = social.to_sym
@@ -29,6 +25,19 @@ class Post::Share < ActiveRecord::Base
     name, message, link = prepare(post)
     graph = Koala::Facebook::API.new(Settings.rupor.facebook.access_token)
     graph.put_object(Settings.rupor.facebook.page_id, 'feed', { message: "#{name}\n\n#{message}\n#{link}" })
+  end
+
+  def self.twitter(post)
+    name, message, link = prepare(post)
+
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = Settings.rupor.twitter.consumer_key
+      config.consumer_secret     = Settings.rupor.twitter.consumer_secret
+      config.access_token        = Settings.rupor.twitter.access_token
+      config.access_token_secret = Settings.rupor.twitter.access_token_secret
+    end
+
+    client.update("#{name}\n#{link}")
   end
 end
 

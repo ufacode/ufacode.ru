@@ -51,6 +51,7 @@ gem 'omniauth-facebook'
 # gem 'omniauth-linkedin'
 gem 'omniauth-vkontakte'
 gem 'omniauth-github'
+gem 'twitter', '~> 5.14.0'
 gem "koala", "~> 2.0"
 # gem 'fb_graph'
 
