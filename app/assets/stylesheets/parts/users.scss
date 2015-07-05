@@ -1,0 +1,51 @@
+@import 'simple/variables';
+
+.widget .panel, .widget.panel {
+  overflow: hidden;
+}
+
+.widget {
+  margin-bottom: 20px;
+  border: 0;
+  > .user-panel{
+    background: $brand-primary;
+  }
+}
+
+.row-table {
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.row-table>[class*=col-] {
+  display: table-cell;
+  float: none;
+  table-layout: fixed;
+  vertical-align: middle;
+}
+
+.text-white {
+  color: #fff;
+  a{ color: #FFF; }
+}
+
+.thumb128 {
+  width: 128px!important;
+  height: 128px!important;
+}
+
+.bg-gray-darker {
+  background-color: $brand-light;
+  color: #fff!important;
+}
+
+.list-group {
+  line-height: 1.3;
+}
+
+.panel>.list-group .list-group-item {
+  border-top: 0;
+}

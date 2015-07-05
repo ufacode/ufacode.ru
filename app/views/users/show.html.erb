@@ -2,9 +2,15 @@
   <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
     <h1>Профиль</h1>
 
-    <div class="row">
-      <%= link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-success pull-right' if can? :edit, @user %>
-    </div>
+    <% if can? :edit, @user %>
+      <div class="row">
+        <div class="col-lg-12">
+          <%= link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-success pull-right' %>
+        </div>
+      </div>
+      <hr/>
+    <% end %>
+
     <div class="row">
       <% if @user.role == 'banned' %>
         <%= link_to "Разбанить", ban_user_path(@user), method: :post, class: 'btn btn-primary pull-right' if can? :ban, @user %>
@@ -14,17 +20,19 @@
     </div>
 
     <div class="row">
-      <div class="col-md-3 text-center">
+      <div class="col-md-3 col-lg-3 text-center">
         <%= image_tag @user.image.url(:thumb) %>
       </div>
 
-      <div class="col-md-9">
-        <strong>Имя:</strong>
-        <%= @user.name %>
-        <br/>
-        <strong>Email:</strong>
-        <%= @user.email %>
-
+      <div class="col-md-9 col-lg-9">
+        <div class="form-group">
+          <label>Имя:</label>
+          <%= @user.name %>
+        </div>
+        <div class="form-group">
+          <label>E-mail:</label>
+          <%= mail_to @user.email %>
+        </div>
       </div>
     </div>
   </div>

@@ -4,6 +4,10 @@
 @import 'simple/variables';
 @import 'font-awesome';
 
+a {
+  transition: all 0.2s linear;
+}
+
 .markItUp{
   width: 100% !important;
   textarea.markItUpEditor{
@@ -14,7 +18,7 @@
   }
 }
 
-$nprogress-color: #FF097B;
+$nprogress-color: $akcent-color;
 $nprogress-height: 3px;
 $nprogress-zindex: 10100;
 
@@ -39,6 +43,9 @@ nav{
     }
     > span{
       color: $brand-light;
+    }
+    &:hover{
+      color: $akcent-color !important;
     }
   }
 }
