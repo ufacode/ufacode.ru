@@ -16,11 +16,14 @@ ActiveRecord::Schema.define(version: 20150705083742) do
   create_table "blogs", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
-    t.string   "uri",         limit: 32
+    t.string   "uri",         limit: 255
     t.integer  "user_id",     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "blogs", ["uri"], name: "index_blogs_on_uri", using: :btree
+  add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   limit: 4, null: false
@@ -55,15 +58,6 @@ ActiveRecord::Schema.define(version: 20150705083742) do
   add_index "post_ratings", ["post_id"], name: "index_post_ratings_on_post_id", using: :btree
   add_index "post_ratings", ["user_id"], name: "index_post_ratings_on_user_id", using: :btree
 
-  create_table "post_shares", force: :cascade do |t|
-    t.integer  "post_id",    limit: 4
-    t.integer  "social",     limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  add_index "post_shares", ["post_id"], name: "index_post_shares_on_post_id", using: :btree
-
   create_table "posts", force: :cascade do |t|
     t.string   "name",         limit: 255
     t.string   "image",        limit: 255
@@ -78,6 +72,8 @@ ActiveRecord::Schema.define(version: 20150705083742) do
     t.integer  "dislikes",     limit: 4,     default: 0
     t.integer  "rating",       limit: 4,     default: 0
   end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "providers", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -157,6 +153,5 @@ ActiveRecord::Schema.define(version: 20150705083742) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "post_shares", "posts"
   add_foreign_key "providers", "users"
 end
