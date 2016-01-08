@@ -5,8 +5,33 @@ class Comment < ActiveRecord::Base
   validates :content, :post, :author, presence: true
 
   has_closure_tree dependent: :destroy
-  acts_as_tree
+  has_many   :ratings, class_name: 'CommentRating', foreign_key: :comment_id
+  
+
+  def like!(user)
+  	change_rating :like, user
+  end
+
+  def dislike!(user)
+  	change_rating :dislike, user
+  end
+
+  private
+
+  def change_rating(action, user)
+  	amount = (action == :like) ? 1 : -1
+  	return if ratings.where(user: user).exists?
+
+  	rating.create({
+  		amount: amount,
+  		user: user
+  		})
+  	update_attributes(rating: rating + amount)
+  	increment!( (amount > 0) ? :likes : :dislikes)
+  end
 end
+
+
 
 # == Schema Information
 #
@@ -19,6 +44,9 @@ end
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  likes      :integer          default(0)
+#  dislikes   :integer          default(0)
+#  rating     :integer          default(0)
 #
 # Indexes
 #

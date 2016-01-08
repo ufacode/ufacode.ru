@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:show, :edit, :update, :destroy, :rate]
+  
   def create
     comment        = Comment.new(comment_params)
     comment.author = current_user
@@ -11,6 +13,20 @@ class CommentsController < ApplicationController
 
   def update
   end
+
+  def rate 
+    if params[:act] == 'like'
+      @comment.like!(current_user)
+    else
+      @comment.dislike!(current_user)
+    end
+
+    rating_value = @comment.rating
+    respond_to do |format|
+      format.json {render json: rating_value}
+    end
+  end
+
 
   private
   def comment_params

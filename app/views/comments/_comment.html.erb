@@ -1,9 +1,21 @@
 <li class="clearfix">
   <%= image_tag comment.author.image.url(:thumb), class: 'avatar' %>
   <div class="post-comments">
-    <p class="meta"><%= l comment.created_at, format: :short %> <a href="#"><%= comment.author.name %></a>: <i class="pull-right"><a href="#" class="reply" data-id="<%= comment.id %>"><small><%= t('comments.reply') %></small></a></i></p>c
+    <p class="meta"><%= l comment.created_at, format: :short %> <a href="#"><%= comment.author.name %></a>: <i class="pull-right"><a href="#" class="reply" data-id="<%= comment.id %>"><small><%= t('comments.reply') %></small></a></i></p>
     <p><%= clean_comment comment.content %></p>
   </div>
+  <div class="clearfix">
+  	
+  </div>
+
+  <div class="post-rating"> 
+   <%= rate_comment_button(@comment, current_user, :like) if user_signed_in? %>
+      <span class="post-rating"><%= @comment.rating %></span>
+    <%= rate_comment_button(@comment, current_user, :dislike) if user_signed_in? %>  
+  </div>
+
   <div id="comment_reply<%= comment.id %>" class="comment-reply"></div>
-  <ul class="comments" id="comments<%= comment.id %>"><%= render comment.children if comment.children.any? %></ul>
+
+  <ul class="comments" id="comments<%= comment.id %>"><%= render comment.children if comment.children.any? %></ul>	
 </li>
+	
