@@ -6,6 +6,7 @@ class Comment < ActiveRecord::Base
 
   has_closure_tree dependent: :destroy
   has_many   :ratings, class_name: 'CommentRating', foreign_key: :comment_id
+  acts_as_tree
   
 
   def like!(user)
