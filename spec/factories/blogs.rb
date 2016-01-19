@@ -14,13 +14,8 @@ end
 #  id          :integer          not null, primary key
 #  name        :string(255)
 #  description :text(65535)
-#  uri         :string(255)
+#  uri         :string(32)
 #  user_id     :integer
 #  created_at  :datetime
 #  updated_at  :datetime
-#
-# Indexes
-#
-#  index_blogs_on_uri      (uri)
-#  index_blogs_on_user_id  (user_id)
 #
