@@ -4,7 +4,7 @@
 // Global Components
 
 body {
-  @include serif();
+  @include sans-serif();
   font-size: 20px;
   color: $gray-dark;
 }
@@ -253,8 +253,7 @@ hr.small {
   }
   .post-meta {
     color: $gray;
-    font-size: 18px;
-    font-style: italic;
+    font-size: 16px;
     margin-top: 0;
     > a {
       text-decoration: none;

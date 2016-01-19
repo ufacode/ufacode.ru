@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     post :rate, on: :member
   end
 
-  resources :comments do 
-    comment :rate, on: :member
+  resources :comments do
+    post :rate, on: :member
   end
 
   resources :search, only: [:index, :create], as: :searchs
