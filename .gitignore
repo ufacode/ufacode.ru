@@ -25,6 +25,7 @@ capybara-*.html
 /public/system
 /coverage/
 /spec/tmp
+/solr
 **.orig
 rerun.txt
 pickle-email-*.html

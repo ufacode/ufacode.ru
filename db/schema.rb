@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705083742) do
+ActiveRecord::Schema.define(version: 20160108112415) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -34,13 +34,27 @@ ActiveRecord::Schema.define(version: 20150705083742) do
   add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "comment_anc_desc_idx", unique: true, using: :btree
   add_index "comment_hierarchies", ["descendant_id"], name: "comment_desc_idx", using: :btree
 
+  create_table "comment_ratings", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "comment_id", limit: 4
+    t.integer  "amount",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "comment_ratings", ["comment_id"], name: "index_comment_ratings_on_comment_id", using: :btree
+  add_index "comment_ratings", ["user_id"], name: "index_comment_ratings_on_user_id", using: :btree
+
   create_table "comments", force: :cascade do |t|
     t.integer  "parent_id",  limit: 4
     t.text     "content",    limit: 65535
     t.integer  "post_id",    limit: 4
     t.integer  "user_id",    limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "likes",      limit: 4,     default: 0
+    t.integer  "dislikes",   limit: 4,     default: 0
+    t.integer  "rating",     limit: 4,     default: 0
   end
 
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree

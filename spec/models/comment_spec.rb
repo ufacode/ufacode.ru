@@ -37,6 +37,9 @@ end
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  likes      :integer          default(0)
+#  dislikes   :integer          default(0)
+#  rating     :integer          default(0)
 #
 # Indexes
 #

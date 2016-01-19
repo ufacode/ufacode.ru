@@ -20,3 +20,5 @@ class PostRating < ActiveRecord::Base
   belongs_to :user
   validates :post, :user, presence: true
 end
+
+

@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   resources :posts do
     post :rate, on: :member
   end
-  resources :comments, only: [:create, :update]
+
+  resources :comments do 
+    comment :rate, on: :member
+  end
 
   resources :search, only: [:index, :create], as: :searchs
 
