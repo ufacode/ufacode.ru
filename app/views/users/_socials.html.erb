@@ -1,0 +1,6 @@
+<%= current_user.socials.each do |social| %>
+  <div class="form-group">
+    <%= social.label :name, 'GitHub' %>
+    <%= social.text_field :github, class: 'form-control' %>
+  </div>
+<% end %>  
