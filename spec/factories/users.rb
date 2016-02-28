@@ -39,10 +39,6 @@ end
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
-#  role                   :string(255)
-#  sex                    :integer          default(1)
-#  description            :text(65535)
-#  wallpaper              :string(255)
 #
 # Indexes
 #

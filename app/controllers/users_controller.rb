@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @social = Social.create(name: :twitter)
     # authorize! :update, @user
   end
 

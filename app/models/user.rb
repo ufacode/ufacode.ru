@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable, :omniauthable
 
   before_validation :set_role
+  after_create :user_soc
 
   mount_uploader :image,     AvatarUploader
   mount_uploader :wallpaper, ImageUploader
@@ -17,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :blogs,     dependent: :destroy
   has_many :providers, dependent: :destroy
   has_many :comments,  dependent: :destroy
+  has_many :socials
 
   validates :name,  presence: true
   validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
@@ -72,6 +74,16 @@ class User < ActiveRecord::Base
     email && email !~ TEMP_EMAIL_REGEX
   end
 
+  def user_soc
+    socials.create(name: :twitter)
+    socials.create(name: :vk)
+    socials.create(name: :github)
+    socials.create(name: :linkedin)
+    socials.create(name: :facebook)
+    socials.create(name: :skype)
+    socials.create(name: :personal_site)
+  end
+
   private
 
   def set_role
@@ -102,10 +114,6 @@ end
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
-#  role                   :string(255)
-#  sex                    :integer          default(1)
-#  description            :text(65535)
-#  wallpaper              :string(255)
 #
 # Indexes
 #

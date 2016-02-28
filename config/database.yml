@@ -7,7 +7,7 @@ default: &default
 
 development:
   <<: *default
-  password: root
+  password: root  
   database: ufacode_development
 
 test:
