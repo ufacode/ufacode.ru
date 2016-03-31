@@ -9,9 +9,9 @@
   </div>
 
   <div class="post-rating"> 
-   <%= rate_comment_button(@comment, current_user, :like) if user_signed_in? %>
-      <span class="post-rating"><%= @comment.rating %></span>
-    <%= rate_comment_button(@comment, current_user, :dislike) if user_signed_in? %>  
+   <%= rate_comment_button(comment, current_user, :like) if user_signed_in? %>
+      <span class="post-rating"><%= comment.rating %></span>
+    <%= rate_comment_button(comment, current_user, :dislike) if user_signed_in? %>  
   </div>
 
   <div id="comment_reply<%= comment.id %>" class="comment-reply"></div>
