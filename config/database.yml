@@ -7,12 +7,12 @@ default: &default
 
 development:
   <<: *default
-  password: root
+  password: 9191420152  
   database: ufacode_development
 
 test:
   <<: *default
-  password: root
+  password: 9191420152
   database: ufacode_test
 
 production:

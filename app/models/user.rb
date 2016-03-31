@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable, :omniauthable
 
   before_validation :set_role
+  after_create :create_socials
 
   mount_uploader :image,     AvatarUploader
   mount_uploader :wallpaper, ImageUploader
@@ -17,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :blogs,     dependent: :destroy
   has_many :providers, dependent: :destroy
   has_many :comments,  dependent: :destroy
+  has_many :socials
 
   validates :name,  presence: true
   validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
@@ -72,11 +74,23 @@ class User < ActiveRecord::Base
     email && email !~ TEMP_EMAIL_REGEX
   end
 
+  def socials
+    socails.create(name: :twitter)
+    socails.create(name: :github)
+    socails.create(name: :linkedin)
+    socails.create(name: :vk)
+    socails.create(name: :facebook)
+    socails.create(name: :personal_site)
+    socails.create(name: :skype)
+  end
+
   private
 
   def set_role
     self.role = 'user' unless role
   end
+
+  
 end
 
 # == Schema Information
