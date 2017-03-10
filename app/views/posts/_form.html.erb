@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+    <h1><%= @post.persisted? ? t('posts.edit') : t('posts.create') %></h1>
+
+    <%= form_for(@post, html: { role: 'form', class: 'form form-horizontal' } ) do |f| %>
+
+      <%= form_errors(@post) %>
+
+      <div class="form-group">
+        <%= f.label :blog_id, t('activerecord.attributes.post.blog') %>
+        <%= f.collection_select :blog_id, Blog.all, :id, :name, {}, {class: 'form-control'} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :tag_list, "Теги(через запятую)" %>
+        <%= f.text_field :tag_list, value: @post.tag_list.join(", "), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.text_area :content, class: 'form-control redactor', style: 'width:100%;', rows: 20 %>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="fileUpload btn btn-primary form-group">
+            <span><i class="glyphicon glyphicon-picture"></i> Загрузить изображение</span>
+            <%= f.file_field :image, class: 'upload' %>
+          </div>
+          <%= image_tag @post.image.url(:thumb) if @post.image %>
+          <%= f.hidden_field :image_cache %>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group pull-right">
+            <%= f.check_box :announcement %>&nbsp;
+            <%= f.label :announcement %>
+          </div>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div class="form-group">
+        <%= f.submit t('controls.save'), class: 'btn btn-success' %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ufacode - уфимское сообщество ИТ ремесленников</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application',            'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'inc/nav' %>
+<%= flash_message(flash) %>
+
+<%= yield %>
+
+<%= render 'inc/footer' %>
+
+</body>
+</html>

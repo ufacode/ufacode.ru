@@ -1,0 +1,23 @@
+ru:
+  on: в
+  are_u_sure: Вы уверены?
+  sign_up: Регистрация
+  sign_in: Войти
+  password: Пароль
+  
+
+  activerecord:
+    attributes:
+      user:
+        name: Имя
+        password: Пароль
+        password_confirmation: Повторите пароль
+        remember_me: Запомнить меня
+
+  
+  
+  
+  
+  
+  
+  

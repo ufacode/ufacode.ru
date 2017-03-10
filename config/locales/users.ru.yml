@@ -1,0 +1,20 @@
+ru:
+  users:
+    signout: Выйти
+    signin: Войти
+    register: Зарегистрироваться
+    new_password: Новый пароль
+    name: Имя или ник
+    sex: Пол
+    description: О себе
+    man: Мужчина
+    woman: Женщина
+    upload_avatar: Загрузить аватар
+    upload_wallpaper: Загрузить обои
+    forgot_password: Забыли пароль?
+    didnt_confirmation: Не получили письмо с подтверждением?
+    unlock_instructions: Не получили инструкции для разблокировки?
+    sign_in_with: Войти через
+    resend_unlock_instructions: Отправить инструкции для разблокировки
+    updated: Профиль обновлен
+

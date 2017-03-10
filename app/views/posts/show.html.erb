@@ -1,0 +1,103 @@
+<header class="intro-header" style="background-image: url('<%= @post.image.url %>')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1><%= @post.name %></h1>
+
+          <h2 class="subheading"><%= clean_post @post.content_cut %></h2>
+          <span class="meta">
+            <%= t('posts.posted_by') %> <%= link_to @post.author.name, user_path(@post.author) %> <%= t('on') %> <%= l @post.created_at, format: :short %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+        <%= clean_post @post.content %>
+
+        <hr/>
+        <div>
+          <p class="tags">
+            <%= show_tags(@post) %>
+          </p>
+
+          <div class="post-rating">
+            <%= rate_post_button(@post, current_user, :like) if user_signed_in? %>
+            <span class="post-rating"><%= @post.rating %></span>
+            <%= rate_post_button(@post, current_user, :dislike) if user_signed_in? %>
+          </div>
+          <div class="post-share">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 cl-md-offset-1">
+      <div class="blog-comment">
+        <h3 class="text-success"><%= t('comments.title') %></h3>
+        <hr/>
+
+        <ul class="comments" id="comments">
+          <%= render @post.comments %>
+        </ul>
+
+<!--
+        <ul class="comments">
+          <li class="clearfix">
+            <img src="http://bootdey.com/img/Content/user_1.jpg" class="avatar" alt="">
+            <div class="post-comments">
+              <p class="meta">Dec 18, 2014 <a href="#">JohnDoe</a> says : <i class="pull-right"><a href="#"><small>Reply</small></a></i></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Etiam a sapien odio, sit amet
+              </p>
+            </div>
+          </li>
+          <li class="clearfix">
+            <img src="http://bootdey.com/img/Content/user_2.jpg" class="avatar" alt="">
+            <div class="post-comments">
+              <p class="meta">Dec 19, 2014 <a href="#">JohnDoe</a> says : <i class="pull-right"><a href="#"><small>Reply</small></a></i></p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Etiam a sapien odio, sit amet
+              </p>
+            </div>
+
+            <ul class="comments">
+              <li class="clearfix">
+                <img src="http://bootdey.com/img/Content/user_3.jpg" class="avatar" alt="">
+                <div class="post-comments">
+                  <p class="meta">Dec 20, 2014 <a href="#">JohnDoe</a> says : <i class="pull-right"><a href="#"><small>Reply</small></a></i></p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Etiam a sapien odio, sit amet
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+-->
+
+        <div id="comment_new">
+          <%= render 'comments/form', comment: @comment, post: @post %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

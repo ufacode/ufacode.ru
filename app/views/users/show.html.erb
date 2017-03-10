@@ -1,0 +1,9 @@
+<%= render 'users/header', user: @user %>
+
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <h1><%= t('users.description') %></h1>
+
+    <div><%= clean_post @user.description %></div>
+  </div>
+</div>

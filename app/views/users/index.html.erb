@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+    <h1>Пользователи</h1>
+
+    <% @users.each do |user| %>
+      <div class="col-md-4">
+        <div class="panel widget">
+          <div class="panel-body text-center bg-center user-panel">
+            <div class="row row-table">
+              <div class="col-xs-12 text-white">
+                <a href="<%= user_path(user.id) %>">
+                  <%= image_tag user.image.url(:thumb), class: 'img-thumbnail img-circle thumb128' %>
+                  <h3 class="m0"><%= user.name %></h3>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body text-center bg-gray-darker">
+            <div class="row row-table">
+              <div class="col-xs-4">
+                <a href="#" class="text-white">
+                  <em class="fa fa-twitter fa-2x"></em>
+                </a>
+              </div>
+              <div class="col-xs-4">
+                <a href="#" class="text-white">
+                  <em class="fa fa-github fa-2x"></em>
+                </a>
+              </div>
+              <div class="col-xs-4">
+                <a href="#" class="text-white">
+                  <em class="fa fa-linkedin fa-2x"></em>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="list-group">
+            <a href="#" class="list-group-item">
+              <span class="label label-primary pull-right">300</span>
+              <em class="fa fa-fw fa-pencil text-muted"></em>Posts
+            </a>
+            <a href="#" class="list-group-item">
+              <span class="label label-primary pull-right">15</span>
+              <em class="fa fa-fw fa-comments text-muted"></em>Comments
+            </a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <%= paginate @users %>
+
+  </div>
+</div>

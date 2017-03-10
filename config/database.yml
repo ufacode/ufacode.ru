@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: 5
+  username: root
+#  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  password:
+  database: ufacode_development
+
+test:
+  <<: *default
+  password:
+  database: ufacode_test
+
+production:
+  <<: *default
+  database: ufacode_production
+  username: ufacode
+  password: <%= ENV['UFACODE_DATABASE_PASSWORD'] %>
