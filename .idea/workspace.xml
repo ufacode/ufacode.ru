@@ -19,11 +19,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Gemfile">
+      <file leaf-file-name="20170317065740_add_missing_unique_indices.acts_as_taggable_on_engine.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20170317065740_add_missing_unique_indices.acts_as_taggable_on_engine.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+            <state relative-caret-position="136">
+              <caret line="8" column="50" lean-forward="false" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20170317065739_acts_as_taggable_on_migration.acts_as_taggable_on_engine.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20170317065739_acts_as_taggable_on_migration.acts_as_taggable_on_engine.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -65,6 +75,12 @@
         <option value="$PROJECT_DIR$/db/migrate/20150201195846_acts_as_taggable_on_migration.acts_as_taggable_on_engine.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20150201195847_add_missing_unique_indices.acts_as_taggable_on_engine.rb" />
         <option value="$PROJECT_DIR$/config/database.yml" />
+        <option value="$PROJECT_DIR$/db/migrate/20170317065740_add_missing_unique_indices.acts_as_taggable_on_engine.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20170317065741_add_taggings_counter_cache_to_tags.acts_as_taggable_on_engine.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20170317065742_add_missing_taggable_index.acts_as_taggable_on_engine.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20170317065743_change_collation_for_tag_names.acts_as_taggable_on_engine.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20170317065744_add_missing_indexes.acts_as_taggable_on_engine.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20170317065739_acts_as_taggable_on_migration.acts_as_taggable_on_engine.rb" />
       </list>
     </option>
   </component>
@@ -750,10 +766,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170317065744_add_missing_indexes.acts_as_taggable_on_engine.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="54" lean-forward="false" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170317065743_change_collation_for_tag_names.acts_as_taggable_on_engine.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="63" lean-forward="false" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170317065742_add_missing_taggable_index.acts_as_taggable_on_engine.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="60" lean-forward="false" selection-start-line="1" selection-start-column="60" selection-end-line="1" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170317065741_add_taggings_counter_cache_to_tags.acts_as_taggable_on_engine.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="66" lean-forward="false" selection-start-line="1" selection-start-column="66" selection-end-line="1" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="63" column="17" lean-forward="true" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170317065740_add_missing_unique_indices.acts_as_taggable_on_engine.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="50" lean-forward="false" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20170317065739_acts_as_taggable_on_migration.acts_as_taggable_on_engine.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
