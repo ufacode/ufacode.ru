@@ -34,4 +34,4 @@ class @App
       window.app = new App
       window.app.run()
 
-$(document).ready(App.ready)
+$(document).on 'tubolinks:load', App.ready

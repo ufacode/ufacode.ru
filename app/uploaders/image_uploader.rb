@@ -48,7 +48,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url(*_args)
-    '/img/posts/' << [version_name, 'default.png'].compact.join('_')
+    "/img/posts/#{[version_name, 'default.png'].compact.join('_')}"
   end
 
   def filename

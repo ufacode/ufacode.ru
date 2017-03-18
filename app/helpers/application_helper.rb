@@ -11,24 +11,24 @@ module ApplicationHelper
   ##
   # Show form validation errors
   def form_errors(form, show_field = true)
-    html = ''
+    html = []
     if form.errors.any?
       plural = Russian.pluralize(form.errors.count, 'ошибка', 'ошибки', 'ошибок')
-      html = %(
+      html << %(
         <div class="alert">
           <big>#{form.errors.count} #{plural} в форме:</big>
           <hr/>
           <ul>
       )
       form.errors.each do |field, msg|
-        html += show_field ? %(<li>поле "#{field}" #{msg}</li>) : "<li>#{msg}</li>"
+        html << show_field ? %(<li>поле "#{field}" #{msg}</li>) : "<li>#{msg}</li>"
       end
-      html += %(
+      html << %(
         </ul>
       </div>
       )
     end
-    raw(html)
+    html.join('').html_safe
   end
 
   def markdown(text)
@@ -48,15 +48,15 @@ module ApplicationHelper
   ##
   # Show flash messages
   def flash_message(flash)
-    out = ''
+    out = []
     unless flash.empty?
-      out = '<script type="text/javascript" data-turbolinks-eval="always">'
+      out << '<script type="text/javascript" data-turbolinks-eval="always">'
       flash.each do |f|
         type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'success')
         out << %{ toastr['#{type}']('#{f[1]}'); }
       end
       out << '</script>'
     end
-    out.html_safe
+    out.join('').html_safe
   end
 end

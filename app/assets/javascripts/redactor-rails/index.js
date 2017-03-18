@@ -25,4 +25,4 @@ window.init_redactor = function () {
     });
 }
 
-$(document).on('ready page:load', window.init_redactor);
+$(document).on('turbolinks:load', window.init_redactor);
