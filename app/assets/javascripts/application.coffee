@@ -1,4 +1,3 @@
-#= require rails-ujs
 #= require jquery
 #= require jquery.turbolinks
 #= require bootstrap-sprockets
