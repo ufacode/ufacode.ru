@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   include Sortable
 
   TEMP_EMAIL_PREFIX = 'change@me'
-  TEMP_EMAIL_REGEX  = /\Achange@me/
+  TEMP_EMAIL_REGEX = /\Achange@me/
 
   devise :database_authenticatable, :registerable, :confirmable, :recoverable,
          :rememberable, :trackable, :validatable, :omniauthable
@@ -11,19 +11,20 @@ class User < ActiveRecord::Base
   before_validation :set_role
   after_create :user_soc
 
-  mount_uploader :image,     AvatarUploader
+  mount_uploader :image, AvatarUploader
   mount_uploader :wallpaper, ImageUploader
 
-  has_many :posts,     dependent: :destroy
-  has_many :blogs,     dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :blogs, dependent: :destroy
   has_many :providers, dependent: :destroy
-  has_many :comments,  dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :socials
 
-  validates :name,  presence: true
-  validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
+  validates :name, presence: true
+  validates :email, uniqueness: true
+  validates :email, format: {without: TEMP_EMAIL_REGEX}, on: :update
 
-  enum sex: { male: 1, female: 2 }
+  enum sex: {male: 1, female: 2}
 
   def full_name
     name || email

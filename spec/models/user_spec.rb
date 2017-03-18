@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe User, type: :model do
   it 'is valid factory :user' do
     expect(create(:user)).to be_valid
@@ -9,20 +7,21 @@ RSpec.describe User, type: :model do
   it 'checks empty user name' do
     user = build(:user, name: nil)
     user.valid?
-    expect(user.errors[:name]).to include("can't be blank")
+    expect(user.errors[:name]).to include I18n.t('errors.messages.blank')
   end
 
   it 'checks empty user email' do
     user = build(:user, email: nil)
     user.valid?
-    expect(user.errors[:email]).to include("can't be blank")
+    expect(user.errors[:email]).to include I18n.t('errors.messages.blank')
   end
 
   it 'take uniq emails' do
-    create(:user)
-    user2 = build(:user)
+    info = FactoryGirl.attributes_for(:user)
+    User.create(info)
+    user2 = User.new(info)
     user2.valid?
-    expect(user2.errors[:email]).to include('has already been taken')
+    expect(user2.errors[:email]).to include I18n.t('errors.messages.taken')
   end
 end
 

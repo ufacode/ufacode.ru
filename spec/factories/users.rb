@@ -12,7 +12,6 @@ FactoryGirl.define do
     trait :banned do
       role 'banned'
     end
-    
   end
 end
 
