@@ -1,4 +1,4 @@
-class CreateRedactorAssets < ActiveRecord::Migration[5.1]
+class CreateRedactorAssets < ActiveRecord::Migration[5.0]
   def self.up
     create_table :redactor_assets do |t|
       t.integer :user_id

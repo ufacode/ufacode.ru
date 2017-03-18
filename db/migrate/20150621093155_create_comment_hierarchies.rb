@@ -1,4 +1,4 @@
-class CreateCommentHierarchies < ActiveRecord::Migration[5.1]
+class CreateCommentHierarchies < ActiveRecord::Migration[5.0]
   def change
     create_table :comment_hierarchies, id: false do |t|
       t.integer :ancestor_id, null: false

@@ -1,4 +1,4 @@
-class CreateSocials < ActiveRecord::Migration[5.1]
+class CreateSocials < ActiveRecord::Migration[5.0]
   def change
     create_table :socials do |t|
     	t.integer :user_id, index: true

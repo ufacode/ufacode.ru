@@ -50,19 +50,19 @@ end
 #
 # Table name: posts
 #
-#  id           :integer          not null, primary key
-#  name         :string(255)
-#  image        :string(255)
+#  announcement :boolean
+#  blog_id      :integer
 #  content      :text(65535)
 #  content_cut  :text(65535)
+#  created_at   :datetime         not null
+#  dislikes     :integer          default("0")
+#  id           :integer          not null, primary key
+#  image        :string(255)
+#  likes        :integer          default("0")
+#  name         :string(255)
+#  rating       :integer          default("0")
+#  updated_at   :datetime         not null
 #  user_id      :integer
-#  created_at   :datetime
-#  updated_at   :datetime
-#  blog_id      :integer
-#  announcement :boolean
-#  likes        :integer          default(0)
-#  dislikes     :integer          default(0)
-#  rating       :integer          default(0)
 #
 # Indexes
 #

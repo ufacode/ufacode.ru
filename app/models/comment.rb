@@ -34,16 +34,16 @@ end
 #
 # Table name: comments
 #
-#  id         :integer          not null, primary key
-#  parent_id  :integer
 #  content    :text(65535)
-#  post_id    :integer
-#  user_id    :integer
 #  created_at :datetime         not null
+#  dislikes   :integer          default("0")
+#  id         :integer          not null, primary key
+#  likes      :integer          default("0")
+#  parent_id  :integer
+#  post_id    :integer
+#  rating     :integer          default("0")
 #  updated_at :datetime         not null
-#  likes      :integer          default(0)
-#  dislikes   :integer          default(0)
-#  rating     :integer          default(0)
+#  user_id    :integer
 #
 # Indexes
 #

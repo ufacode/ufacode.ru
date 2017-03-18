@@ -1,4 +1,4 @@
-class BlogHasManyPosts < ActiveRecord::Migration[5.1]
+class BlogHasManyPosts < ActiveRecord::Migration[5.0]
   def up
     add_column :posts, :blog_id, :integer, index: true
   end

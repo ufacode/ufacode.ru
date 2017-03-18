@@ -11,18 +11,18 @@ end
 #
 # Table name: redactor_assets
 #
-#  id                :integer          not null, primary key
-#  user_id           :integer
-#  data_file_name    :string(255)      not null
-#  data_content_type :string(255)
-#  data_file_size    :integer
 #  assetable_id      :integer
 #  assetable_type    :string(30)
-#  type              :string(30)
-#  width             :integer
+#  created_at        :datetime         not null
+#  data_content_type :string(255)
+#  data_file_name    :string(255)      not null
+#  data_file_size    :integer
 #  height            :integer
-#  created_at        :datetime
-#  updated_at        :datetime
+#  id                :integer          not null, primary key
+#  type              :string(30)
+#  updated_at        :datetime         not null
+#  user_id           :integer
+#  width             :integer
 #
 # Indexes
 #

@@ -1,4 +1,4 @@
-class CreatePostRatings < ActiveRecord::Migration[5.1]
+class CreatePostRatings < ActiveRecord::Migration[5.0]
   def change
     create_table :post_ratings do |t|
       t.integer :user_id, index: true

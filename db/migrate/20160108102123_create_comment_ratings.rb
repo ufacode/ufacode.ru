@@ -1,4 +1,4 @@
-class CreateCommentRatings < ActiveRecord::Migration[5.1]
+class CreateCommentRatings < ActiveRecord::Migration[5.0]
   def change
     create_table :comment_ratings do |t|
     	t.integer :user_id, index: true
