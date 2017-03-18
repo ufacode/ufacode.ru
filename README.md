@@ -1,24 +1,5 @@
-# README
+# Ufacode
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+community engine, collective blogging system build to replace livestreet (php) 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* https://trello.com/b/7zNgb7p2/ufacode-community-engine

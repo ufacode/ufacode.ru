@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Blog < ActiveRecord::Base
   validates :name, :uri, presence: true
   validates :uri, uniqueness: true

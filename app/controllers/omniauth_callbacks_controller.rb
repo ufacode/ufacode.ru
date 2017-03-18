@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def self.provides_callback_for(provider)
     class_eval %{

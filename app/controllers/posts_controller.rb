@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :rate]
@@ -14,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post  = Post.new
+    @post = Post.new
   end
 
   def edit; end

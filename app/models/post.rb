@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Post < ActiveRecord::Base
   include Sortable
   before_validation :fill_content_cut
@@ -31,21 +32,17 @@ class Post < ActiveRecord::Base
   private
 
   def fill_content_cut
-    unless content.empty?
-      self.content_cut = content.split.first(15).join(' ')
-    end
+    self.content_cut = content.split.first(15).join(' ') unless content.empty?
   end
 
   def change_rating(action, user)
-    amount = (action == :like) ? 1 : -1
+    amount = action == :like ? 1 : -1
     return if ratings.where(user: user).exists?
 
-    ratings.create({
-                      amount: amount,
-                      user:   user
-                    })
+    ratings.create(amount: amount,
+                   user:   user)
     update_attributes(rating: rating + amount)
-    increment!( (amount > 0) ? :likes : :dislikes)
+    increment!(amount > 0 ? :likes : :dislikes)
   end
 end
 

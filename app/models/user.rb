@@ -1,10 +1,11 @@
+# frozen_string_literal: true
 class User < ActiveRecord::Base
   include Sortable
-  
+
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX  = /\Achange@me/
 
-  devise :database_authenticatable, :registerable, :confirmable,  :recoverable,
+  devise :database_authenticatable, :registerable, :confirmable, :recoverable,
          :rememberable, :trackable, :validatable, :omniauthable
 
   before_validation :set_role
@@ -12,7 +13,6 @@ class User < ActiveRecord::Base
 
   mount_uploader :image,     AvatarUploader
   mount_uploader :wallpaper, ImageUploader
-
 
   has_many :posts,     dependent: :destroy
   has_many :blogs,     dependent: :destroy

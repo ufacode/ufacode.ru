@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # == Schema Information
 #
 # Table name: post_ratings
@@ -20,5 +21,3 @@ class PostRating < ActiveRecord::Base
   belongs_to :user
   validates :post, :user, presence: true
 end
-
-

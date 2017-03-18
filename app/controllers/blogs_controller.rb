@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class BlogsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
@@ -15,8 +16,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @blog = Blog.new(blog_params)
@@ -45,7 +45,7 @@ class BlogsController < ApplicationController
 
   # setup blog
   def set_blog
-    @blog = Blog.find_by_uri(params[:id])
+    @blog = Blog.find_by(uri: params[:id])
   end
 
   # whitelist for params

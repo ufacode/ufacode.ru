@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 class CommentRating < ActiveRecord::Base
-	belongs_to :comment
-	belongs_to :user
-	validates :user, :comment, presence: true
+  belongs_to :comment
+  belongs_to :user
+  validates :user, :comment, presence: true
 end
 
 # == Schema Information

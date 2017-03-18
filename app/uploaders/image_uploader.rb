@@ -1,4 +1,5 @@
 # encoding: utf-8
+# frozen_string_literal: true
 
 class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
@@ -33,11 +34,11 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_fit => [250, nil]
+    process resize_to_fit: [250, nil]
   end
 
   version :preview do
-    process :resize_to_fill => [150, 150]
+    process resize_to_fill: [150, 150]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -46,7 +47,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  def default_url(*args)
+  def default_url(*_args)
     '/img/posts/' << [version_name, 'default.png'].compact.join('_')
   end
 
@@ -58,6 +59,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def secure_token
     var = :"@#{mounted_as}_secure_token"
-    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+    model.instance_variable_get(var) || model.instance_variable_set(var, SecureRandom.uuid)
   end
 end
