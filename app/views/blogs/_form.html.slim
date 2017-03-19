@@ -1,0 +1,21 @@
+.container
+  .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+    h1
+      = @blog.persisted? ? t('blogs.edit') : t('blogs.create')
+    = form_for(@blog, html: { role: 'form', class: 'form form-horizontal' } ) do |f|
+      = form_errors(@blog)
+      .form-group
+        = f.label :name
+        br
+        = f.text_field :name, class: 'form-control'
+      .form-group
+        = f.label :description
+        br
+        = f.text_area :description, class: 'form-control redactor', style: 'width:100%;', rows: 20
+      .form-group
+        = f.label :uri
+        br
+        = f.text_field :uri, class: 'form-control'
+      hr
+      .form-group
+        = f.submit t('controls.save'), class: 'btn btn-success'

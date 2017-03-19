@@ -1,0 +1,48 @@
+= render 'users/header', user: @user
+.container
+  .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2
+    h1
+      | Редактировать профиль
+    = form_for(@user, html: { role: 'form', class: 'form form-horizontal' } ) do |f|
+      = form_errors(@user)
+      .form-group
+        = f.label :name, t('users.name')
+        = f.text_field :name, class: 'form-control'
+      .form-group
+        = f.label :email, 'E-mail'
+        = f.text_field :email, class: 'form-control'
+      = render 'users/socials'
+      .form-group
+        = f.label :password, t('users.new_password')
+        = f.text_field :password, class: 'form-control'
+      .form-group
+        = f.label :sex, t('users.sex')
+        label
+          i.fa.fa-male
+          = f.radio_button :sex, :male
+          = t('users.man')
+        label
+          i.fa.fa-female
+          = f.radio_button :sex, :female
+          = t('users.woman')
+      .form-group
+        = f.label :description, t('users.description')
+        = f.text_area :description, class: 'form-control redactor'
+      .row
+        .col-lg-6
+          .fileUpload.btn.btn-primary.form-group
+            span
+              i.glyphicon.glyphicon-picture
+              = t('users.upload_avatar')
+            = f.file_field :image, class: 'upload'
+          = f.hidden_field :image_cache
+        .col-lg-6
+          .fileUpload.btn.btn-primary.form-group.pull-right
+            span
+              i.glyphicon.glyphicon-picture
+              = t('users.upload_wallpaper')
+            = f.file_field :wallpaper, class: 'upload'
+          = f.hidden_field :wallpaper_cache
+      hr
+      .form-group
+        = f.submit t('controls.save'), class: 'btn btn-success'

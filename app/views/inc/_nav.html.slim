@@ -1,0 +1,39 @@
+nav.navbar.navbar-default.navbar-custom.navbar-fixed-top
+  .container-fluid
+    .navbar-header.page-scroll
+      button.navbar-toggle[type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"]
+        span.sr-only
+          | Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      |  <a class="navbar-brand" href="
+      = root_path
+      | " title="UfaCode">
+      b
+        | //
+      |  Ufa
+      span
+        | Code
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li
+          = link_to 'Лента', posts_path
+        li
+          = link_to 'Блоги', blogs_path
+        li
+          = link_to 'Пользователи', users_path
+        - if user_signed_in?
+          li
+            = link_to current_user do
+              i.fa.fa-user
+              = current_user.full_name
+          li
+            = link_to destroy_user_session_path, method: :delete do
+              i.fa.fa-sign-out
+              = t('users.signout')
+        - else
+          li
+            = link_to 'Войти', new_user_session_path
+          li
+            = link_to 'Зарегистироваться', new_user_registration_path

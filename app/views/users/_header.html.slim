@@ -1,0 +1,23 @@
+| <header class="intro-header profile-widget panel-shadow" style="background-image: url('
+= user.wallpaper.url
+| ')"> 
+.row
+  .col-sm-12
+    .image-container
+      = image_tag user.image.url(:thumb), class: 'avatar'
+  .col-sm-12
+    .details.text-white
+      h4
+        |  <i class="fa fa-
+        = user.sex
+        | ">
+        = user.full_name
+      div
+        = mail_to user.email, class: 'btn btn-info' do
+          i.fa.fa-envelope-o
+          = user.email
+        = link_to "Редактировать профиль", edit_user_path(user), class: 'btn btn-success' if can? :edit, user
+        - if user.role == 'banned'
+          = link_to "Разбанить", ban_user_path(user), method: :post, class: 'btn btn-primary' if can? :ban, user
+        - else
+          = link_to "Забанить",  ban_user_path(user), method: :post, class: 'btn btn-danger' if can? :ban, user

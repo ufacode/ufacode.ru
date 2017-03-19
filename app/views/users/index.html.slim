@@ -1,0 +1,39 @@
+.container
+  .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+    h1
+      | Пользователи
+    - @users.each do |user|
+      .col-md-4
+        .panel.widget
+          .panel-body.text-center.bg-center.user-panel
+            .row.row-table
+              .col-xs-12.text-white
+                |  <a href="
+                = user_path(user.id)
+                | "> 
+                = image_tag user.image.url(:thumb), class: 'img-thumbnail img-circle thumb128'
+                h3.m0
+                  = user.name
+          .panel-body.text-center.bg-gray-darker
+            .row.row-table
+              .col-xs-4
+                a.text-white[href="#"]
+                  em.fa.fa-twitter.fa-2x
+              .col-xs-4
+                a.text-white[href="#"]
+                  em.fa.fa-github.fa-2x
+              .col-xs-4
+                a.text-white[href="#"]
+                  em.fa.fa-linkedin.fa-2x
+          .list-group
+            a.list-group-item[href="#"]
+              span.label.label-primary.pull-right
+                | 300
+              em.fa.fa-fw.fa-pencil.text-muted
+              | Posts 
+            a.list-group-item[href="#"]
+              span.label.label-primary.pull-right
+                | 15
+              em.fa.fa-fw.fa-comments.text-muted
+              | Comments 
+    = paginate @users

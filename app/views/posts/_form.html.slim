@@ -1,0 +1,34 @@
+.container
+  .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+    h1
+      = @post.persisted? ? t('posts.edit') : t('posts.create')
+    = form_for(@post, html: { role: 'form', class: 'form form-horizontal' } ) do |f|
+      = form_errors(@post)
+      .form-group
+        = f.label :blog_id, t('activerecord.attributes.post.blog')
+        = f.collection_select :blog_id, Blog.all, :id, :name, {}, {class: 'form-control'}
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+      .form-group
+        = f.label :tag_list, "Теги(через запятую)"
+        = f.text_field :tag_list, value: @post.tag_list.join(", "), class: 'form-control'
+      .form-group
+        = f.text_area :content, class: 'form-control redactor', style: 'width:100%;', rows: 20
+      .row
+        .col-lg-6
+          .fileUpload.btn.btn-primary.form-group
+            span
+              i.glyphicon.glyphicon-picture
+              |  Загрузить изображение
+            = f.file_field :image, class: 'upload'
+          = image_tag @post.image.url(:thumb) if @post.image
+          = f.hidden_field :image_cache
+        .col-lg-6
+          .form-group.pull-right
+            = f.check_box :announcement
+            |   
+            = f.label :announcement
+      hr
+      .form-group
+        = f.submit t('controls.save'), class: 'btn btn-success'

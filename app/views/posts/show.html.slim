@@ -1,0 +1,43 @@
+| <header class="intro-header" style="background-image: url('
+= @post.image.url
+| ')"> 
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      .post-heading
+        h1
+          = @post.name
+        h2.subheading
+          = clean_post @post.content_cut
+        span.meta
+          = t('posts.posted_by')
+          = link_to @post.author.name, user_path(@post.author)
+          = t('on')
+          = l @post.created_at, format: :short
+article
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        = clean_post @post.content
+        hr
+        div
+          p.tags
+            = show_tags(@post)
+          .post-rating
+            = rate_post_button(@post, current_user, :like) if user_signed_in?
+            span.post-rating
+              = @post.rating
+            = rate_post_button(@post, current_user, :dislike) if user_signed_in?
+          .post-share
+
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.cl-md-offset-1
+      .blog-comment
+        h3.text-success
+          = t('comments.title')
+        hr
+        ul#comments.comments
+          = render @post.comments
+        #comment_new
+          = render 'comments/form', comment: @comment, post: @post

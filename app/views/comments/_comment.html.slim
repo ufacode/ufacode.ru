@@ -1,0 +1,30 @@
+li.clearfix
+  = image_tag comment.author.image.url(:thumb), class: 'avatar'
+  .post-comments
+    p.meta
+      = l comment.created_at, format: :short
+      a[href="#"]
+        = comment.author.name
+      | : 
+      i.pull-right
+        | <a href="#" class="reply" data-id="
+        = comment.id
+        | ">
+        small
+          = t('comments.reply')
+    p
+      = clean_comment comment.content
+  .clearfix
+
+  .post-rating
+    = rate_comment_button(comment, current_user, :like) if user_signed_in?
+    span.post-rating
+      = comment.rating
+    = rate_comment_button(comment, current_user, :dislike) if user_signed_in?
+  |  <div id="comment_reply
+  = comment.id
+  | " class="comment-reply">
+  |  <ul class="comments" id="comments
+  = comment.id
+  | ">
+  = render comment.children if comment.children.any?
