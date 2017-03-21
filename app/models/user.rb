@@ -22,9 +22,9 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :email, uniqueness: true
-  validates :email, format: {without: TEMP_EMAIL_REGEX}, on: :update
+  validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
 
-  enum sex: {male: 1, female: 2}
+  enum sex: { male: 1, female: 2 }
 
   def full_name
     name || email
