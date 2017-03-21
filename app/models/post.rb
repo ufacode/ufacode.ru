@@ -39,10 +39,9 @@ class Post < ActiveRecord::Base
     amount = action == :like ? 1 : -1
     return if ratings.where(user: user).exists?
 
-    ratings.create(amount: amount,
-                   user:   user)
+    ratings.create(amount: amount, user:   user)
     update_attributes(rating: rating + amount)
-    increment!(amount > 0 ? :likes : :dislikes)
+    increment!(amount.positive? ? :likes : :dislikes)
   end
 end
 

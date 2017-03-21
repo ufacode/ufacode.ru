@@ -23,10 +23,9 @@ class Comment < ActiveRecord::Base
     amount = action == :like ? 1 : -1
     return if ratings.where(user: user).exists?
 
-    rating.create(amount: amount,
-                  user: user)
+    rating.create(amount: amount, user: user)
     update_attributes(rating: rating + amount)
-    increment!(amount > 0 ? :likes : :dislikes)
+    increment!(amount.positive? ? :likes : :dislikes)
   end
 end
 
