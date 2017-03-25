@@ -6,7 +6,7 @@ module PostsHelper
 
     out = []
     post.tags.each do |tag|
-      out << link_to(tag.name, posts_path(tag: tag.name), class: 'tag label label-default')
+      out << link_to(tag.name, posts_path(tag: tag.name), class: 'tag label label-info')
     end
     out.join('').html_safe
   end

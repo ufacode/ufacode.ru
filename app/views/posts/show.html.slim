@@ -21,7 +21,7 @@ article
         div
           p.tags
             = show_tags(@post)
-          .p2ost-rating
+          .ratings
             - if user_signed_in?
               = render 'shared/rating_like', resource: @post.to_sgid.to_s, result: '.post-rating'
             span.post-rating
@@ -34,7 +34,7 @@ article
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.cl-md-offset-1
       .blog-comment
-        h3.text-success
+        h3
           = t('comments.title')
         hr
         ul#comments.comments
