@@ -6,7 +6,7 @@ class RatingsController < ApplicationController
     resource = GlobalID::Locator.locate_signed(params[:resource])
 
     rating = Rating.find_or_initialize_by(ratingable: resource, user: current_user)
-    rating.update(amount: (params[:direction] == 'like') ? 1 : -1)
+    rating.update(amount: params[:direction] == 'like' ? 1 : -1)
 
     @result = params[:result]
     @rating = resource.rating
