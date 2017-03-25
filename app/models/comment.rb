@@ -2,31 +2,15 @@
 class Comment < ActiveRecord::Base
   belongs_to :post
   belongs_to :author, class_name: 'User', foreign_key: :user_id
+  has_many :ratings, as: :ratingable
 
   validates :content, :post, :author, presence: true
 
-  has_closure_tree dependent: :destroy
-  has_many :ratings, class_name: 'CommentRating', foreign_key: :comment_id
   acts_as_tree
+  has_closure_tree dependent: :destroy
 
-  def like!(user)
-    change_rating :like, user
-  end
-
-  def dislike!(user)
-    change_rating :dislike, user
-  end
-
-  private
-
-  def change_rating(action, user)
-    amount = action == :like ? 1 : -1
-    return if ratings.where(user: user).exists?
-
-    rating.create(amount: amount,
-                  user: user)
-    update_attributes(rating: rating + amount)
-    increment!(amount > 0 ? :likes : :dislikes)
+  def rating
+    ratings.sum(:amount)
   end
 end
 
@@ -36,12 +20,12 @@ end
 #
 #  content    :text(65535)
 #  created_at :datetime         not null
-#  dislikes   :integer          default("0")
+#  dislikes   :integer          default(0)
 #  id         :integer          not null, primary key
-#  likes      :integer          default("0")
+#  likes      :integer          default(0)
 #  parent_id  :integer
 #  post_id    :integer
-#  rating     :integer          default("0")
+#  rating     :integer          default(0)
 #  updated_at :datetime         not null
 #  user_id    :integer
 #

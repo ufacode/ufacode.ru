@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317065744) do
+ActiveRecord::Schema.define(version: 20170325144158) do
 
-  create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "blogs", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "name"
     t.text     "description", limit: 65535
     t.string   "uri"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170317065744) do
     t.index ["descendant_id"], name: "comment_desc_idx", using: :btree
   end
 
-  create_table "comment_ratings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "comment_ratings", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "user_id"
     t.integer  "comment_id"
     t.integer  "amount"
@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 20170317065744) do
     t.index ["user_id"], name: "index_comment_ratings_on_user_id", using: :btree
   end
 
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "comments", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "parent_id"
     t.text     "content",    limit: 65535
-    t.integer  "post_id"
-    t.integer  "user_id"
+    t.bigint   "post_id"
+    t.bigint   "user_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.integer  "likes",                    default: 0
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20170317065744) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
-  create_table "post_ratings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "post_ratings", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "user_id"
     t.integer  "post_id"
     t.integer  "amount"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20170317065744) do
     t.index ["user_id"], name: "index_post_ratings_on_user_id", using: :btree
   end
 
-  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "posts", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "name"
     t.string   "image"
     t.text     "content",      limit: 65535
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20170317065744) do
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
-  create_table "providers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.integer  "user_id"
+  create_table "providers", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.bigint   "user_id"
     t.string   "name"
     t.string   "uid"
     t.datetime "created_at", null: false
@@ -91,7 +91,18 @@ ActiveRecord::Schema.define(version: 20170317065744) do
     t.index ["user_id"], name: "index_providers_on_user_id", using: :btree
   end
 
-  create_table "redactor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "ratings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string   "ratingable_type"
+    t.integer  "ratingable_id"
+    t.integer  "user_id"
+    t.integer  "amount",          default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["ratingable_type", "ratingable_id"], name: "index_ratings_on_ratingable_type_and_ratingable_id", using: :btree
+    t.index ["user_id"], name: "index_ratings_on_user_id", using: :btree
+  end
+
+  create_table "redactor_assets", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "user_id"
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -107,7 +118,7 @@ ActiveRecord::Schema.define(version: 20170317065744) do
     t.index ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
   end
 
-  create_table "socials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "socials", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "user_id"
     t.string   "name"
     t.string   "value"
@@ -116,12 +127,12 @@ ActiveRecord::Schema.define(version: 20170317065744) do
     t.index ["user_id"], name: "index_socials_on_user_id", using: :btree
   end
 
-  create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.integer  "tag_id"
+  create_table "taggings", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.bigint   "tag_id"
     t.string   "taggable_type"
-    t.integer  "taggable_id"
+    t.bigint   "taggable_id"
     t.string   "tagger_type"
-    t.integer  "tagger_id"
+    t.bigint   "tagger_id"
     t.string   "context",       limit: 128
     t.datetime "created_at"
     t.index ["context"], name: "index_taggings_on_context", using: :btree
@@ -137,13 +148,13 @@ ActiveRecord::Schema.define(version: 20170317065744) do
     t.index ["tagger_type", "tagger_id"], name: "index_taggings_on_tagger_type_and_tagger_id", using: :btree
   end
 
-  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "tags", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string  "name",                       collation: "utf8_bin"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "users", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "email",                                default: "", null: false
     t.string   "encrypted_password",                   default: "", null: false
     t.string   "reset_password_token"

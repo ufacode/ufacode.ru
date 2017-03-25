@@ -114,8 +114,8 @@ end
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)
 #  role                   :string(255)
-#  sex                    :integer          default("1")
-#  sign_in_count          :integer          default("0"), not null
+#  sex                    :integer          default("male")
+#  sign_in_count          :integer          default(0), not null
 #  unconfirmed_email      :string(255)
 #  updated_at             :datetime         not null
 #  wallpaper              :string(255)

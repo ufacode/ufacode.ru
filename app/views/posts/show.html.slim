@@ -1,6 +1,4 @@
-| <header class="intro-header" style="background-image: url('
-= @post.image.url
-| ')"> 
+header class="intro-header" style="background-image: url('#{@post.image.url}')"
 .container
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
@@ -23,18 +21,20 @@ article
         div
           p.tags
             = show_tags(@post)
-          .post-rating
-            = rate_post_button(@post, current_user, :like) if user_signed_in?
+          .ratings
+            - if user_signed_in?
+              = render 'shared/rating_like', resource: @post.to_sgid.to_s, result: '.post-rating'
             span.post-rating
               = @post.rating
-            = rate_post_button(@post, current_user, :dislike) if user_signed_in?
+            - if user_signed_in?
+              = render 'shared/rating_dislike', resource: @post.to_sgid.to_s, result: '.post-rating'
           .post-share
 
 .container
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.cl-md-offset-1
       .blog-comment
-        h3.text-success
+        h3
           = t('comments.title')
         hr
         ul#comments.comments
