@@ -8,14 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :blogs
-  resources :posts do
-    post :rate, on: :member
-  end
-
-  resources :comments do
-    post :rate, on: :member
-  end
-
+  resources :posts
+  resources :comments
+  resources :ratings, only: [:create]
   resources :search, only: [:index, :create], as: :searchs
 
   mount RedactorRails::Engine => '/redactor_rails'

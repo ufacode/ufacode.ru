@@ -43,19 +43,6 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: t('posts.deleted')
   end
 
-  def rate
-    if params[:act] == 'like'
-      @post.like!(current_user)
-    else
-      @post.dislike!(current_user)
-    end
-
-    rating_value = @post.rating
-    respond_to do |format|
-      format.json { render json: rating_value }
-    end
-  end
-
   private
 
   def set_post

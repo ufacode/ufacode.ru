@@ -35,12 +35,12 @@ end
 #
 #  content    :text(65535)
 #  created_at :datetime         not null
-#  dislikes   :integer          default("0")
+#  dislikes   :integer          default(0)
 #  id         :integer          not null, primary key
-#  likes      :integer          default("0")
+#  likes      :integer          default(0)
 #  parent_id  :integer
 #  post_id    :integer
-#  rating     :integer          default("0")
+#  rating     :integer          default(0)
 #  updated_at :datetime         not null
 #  user_id    :integer
 #
