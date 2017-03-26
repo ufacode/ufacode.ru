@@ -2,6 +2,7 @@ li.clearfix
   = image_tag comment.author.image.url(:thumb), class: 'avatar'
   .post-comments
     p.meta
+      a name="comment#{comment.id}"
       a href="#"
         = comment.author.name
       =< l comment.created_at, format: :short
