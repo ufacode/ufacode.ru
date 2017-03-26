@@ -36,8 +36,9 @@ nav.is-visible{
   background: rgba(255,255,255,0.8);
 }
 // logo colors *Code
-nav{
+.navbar-custom{
   .navbar-brand{
+    //color: $white-faded;
     > b{
       color: $brand-primary;
     }
@@ -49,6 +50,21 @@ nav{
     }
   }
 }
+.navbar-custom-simple{
+  .navbar-brand{
+    color: $darkest-color !important;
+    > b{
+      color: $brand-primary;
+    }
+    > span{
+      color: $brand-light;
+    }
+    &:hover{
+      color: $akcent-color !important;
+    }
+  }
+}
+
 .site-heading{
   > h1{
     > span{ color: $brand-light; }
