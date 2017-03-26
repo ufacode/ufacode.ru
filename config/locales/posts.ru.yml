@@ -6,7 +6,7 @@ ru:
     created: Топик создан
     updated: Топик обновлен
     deleted: Топик удален
-    posted_by: Автор
+    posted_by: 'Автор:'
   activerecord:
     attributes:
       post:

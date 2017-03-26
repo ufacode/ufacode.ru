@@ -14,7 +14,7 @@
         = f.label :tag_list, "Теги(через запятую)"
         = f.text_field :tag_list, value: @post.tag_list.join(", "), class: 'form-control'
       .form-group
-        = f.text_area :content, class: 'form-control redactor', style: 'width:100%;', rows: 20
+        = f.text_area :content, class: 'form-control redactor', style: 'width:100%;', rows: 25
       .row
         .col-lg-6
           .fileUpload.btn.btn-primary.form-group

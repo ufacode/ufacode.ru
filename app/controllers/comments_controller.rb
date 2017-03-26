@@ -1,19 +1,16 @@
 # frozen_string_literal: true
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy, :rate]
-
   def create
-    comment = Comment.new(comment_params)
+    post = Post.find(params[:comment][:post_id])
+    comment = post.comments.new(comment_params)
     comment.author = current_user
 
     if comment.save
-      render comment
+      redirect_to "#{post_path(post)}#comment#{comment.id}", notice: t('comments.created')
     else
-      render json: { errors: comment.errors }, status: :unprocessable_entity
+      redirect_to post_path(post), alert: t('comments.failed')
     end
   end
-
-  def update; end
 
   private
 
