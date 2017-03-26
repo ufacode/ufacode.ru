@@ -1,3 +1,4 @@
+@import 'simple/variables';
 
 .markItUpHeader{
   margin: 10px 0 !important;
@@ -23,9 +24,14 @@
 
 a.tag{
   text-decoration: none;
-  color: #FFF;
+  font-weight: 600;
+  color: $white-faded !important;
   margin-right: 5px;
 }
+a.tag:hover{
+  color: $darkest-color;
+}
+
 .tag_cloud {
   margin: 20px 0;
 }
