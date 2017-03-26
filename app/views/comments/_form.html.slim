@@ -3,9 +3,9 @@
     = f.hidden_field :parent_id
     = f.hidden_field :post_id, value: post.id
     .form-group
-      = f.text_area :content, class: 'redactor', rows: 5
+      = f.text_area :content, class: 'redactor', rows: 7
     .form-group
       = f.submit t('comments.add'), class: 'btn btn-success'
 - else
   p
-    = t('comments.signin_first', signin_link: new_user_session_path, signup_link: new_user_registration_path).html_safe
+    = t('comments.signin', signin_link: new_user_session_path, signup_link: new_user_registration_path).html_safe

@@ -3,32 +3,30 @@ header class="intro-header" style="background-image: url('#{@post.image.url}')"
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
       .post-heading
-        h1
-          = @post.name
-        h2.subheading
-          = clean_post @post.content_cut
-        span.meta
-          = t('posts.posted_by')
-          = link_to @post.author.name, user_path(@post.author)
-          = t('on')
+        h1= @post.name
+        small.meta
+          => t('posts.posted_by')
+          => link_to @post.author.name, user_path(@post.author)
+          => t('on')
           = l @post.created_at, format: :short
 article
   .container
     .row
       .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
         = clean_post @post.content
-        hr
-        div
-          p.tags
-            = show_tags(@post)
-          .ratings
-            - if user_signed_in?
-              = render 'shared/rating_like', resource: @post.to_sgid.to_s, result: '.post-rating'
-            span.post-rating
-              = @post.rating
-            - if user_signed_in?
-              = render 'shared/rating_dislike', resource: @post.to_sgid.to_s, result: '.post-rating'
-          .post-share
+        .panel.panel-default
+          .panel-body
+            .tags
+              = show_tags(@post)
+          .panel-footer
+            .ratings
+              - if user_signed_in?
+                = render 'shared/rating_like', resource: @post.to_sgid.to_s, result: '.post-rating'
+              span.post-rating
+                = @post.rating
+              - if user_signed_in?
+                = render 'shared/rating_dislike', resource: @post.to_sgid.to_s, result: '.post-rating'
+            .post-share
 
 .container
   .row
@@ -36,7 +34,6 @@ article
       .blog-comment
         h3
           = t('comments.title')
-        hr
         ul#comments.comments
           = render @post.comments
         #comment_new
