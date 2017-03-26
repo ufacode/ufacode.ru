@@ -9,6 +9,10 @@ header class="intro-header" style="background-image: url('#{@post.image.url}')"
           => link_to @post.author.name, user_path(@post.author)
           => t('on')
           = l @post.created_at, format: :short
+    .pull-right
+      .btn-group
+        = link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_post_path(@post), class: 'btn btn-primary btn-xs', title: t('controls.edit') if can? :edit, @post
+        = link_to '<i class="fa fa-trash"></i>'.html_safe, @post, method: :delete, data: {confirm: t('are_u_sure')}, class: 'btn btn-danger btn-xs', title: t('controls.destroy') if can? :destroy, @post
 article
   .container
     .row
