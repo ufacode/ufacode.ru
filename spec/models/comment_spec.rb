@@ -1,28 +1,26 @@
-require 'rails_helper'
-
 RSpec.describe Comment, type: :model do
   it 'checks content is nil' do
     comment = build(:comment, content: nil)
     comment.valid?
-    expect(comment.errors[:content]).to include("can't be blank")
+    expect(comment.errors[:content]).to include  I18n.t('errors.messages.blank')
   end
 
   it 'checks content is empty' do
     comment = build(:comment, content: '')
     comment.valid?
-    expect(comment.errors[:content]).to include("can't be blank")
+    expect(comment.errors[:content]).to include  I18n.t('errors.messages.blank')
   end
 
   it 'checks with author associated' do
     comment = build(:comment, author: nil)
     comment.valid?
-    expect(comment.errors[:author]).to include("can't be blank")
+    expect(comment.errors[:author]).to include  I18n.t('errors.messages.blank')
   end
 
   it 'checks with post associated' do
     comment = build(:comment, post: nil)
     comment.valid?
-    expect(comment.errors[:post]).to include("can't be blank")
+    expect(comment.errors[:post]).to include  I18n.t('errors.messages.blank')
   end
 end
 
