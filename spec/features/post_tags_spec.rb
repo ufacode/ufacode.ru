@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature "Post Tags" do
 
   scenario "have tags on the page" do

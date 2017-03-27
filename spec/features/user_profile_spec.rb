@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'User profile features' do
 
   let(:user) { create(:user) }

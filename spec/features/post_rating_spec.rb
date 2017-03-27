@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'at posts#show page' do
 
   let(:post) { create(:post) }
@@ -19,7 +17,7 @@ feature 'at posts#show page' do
       expect(elements.length).to eq(0)
     end
   end
-#########################################################################
+
   context 'checking with logged in user' do
 
     before do
@@ -36,8 +34,6 @@ feature 'at posts#show page' do
       prev_post_rating = post.rating
       element = page.find(".post-like")
       element.click
-      # sleep 10
-      # p Capybara.save_and_open_page_path
       save_and_open_page
       expect(post.rating).to eq(prev_post_rating + 1)
     end
