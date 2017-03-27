@@ -8,32 +8,32 @@ RSpec.describe Blog, type: :model do
   it 'checks empty blog name' do
     blog = build(:blog, name: nil)
     blog.valid?
-    expect(blog.errors[:name]).to include("can't be blank")
+    expect(blog.errors[:name]).to include I18n.t('errors.messages.blank')
   end
 
   it 'checks empty blog uri' do
     blog = build(:blog, uri: nil)
     blog.valid?
-    expect(blog.errors[:uri]).to include("can't be blank")
+    expect(blog.errors[:uri]).to include I18n.t('errors.messages.blank')
   end
 
   it 'take uniq blog uri' do
     create(:blog, uri: 'test')
     blog2 = build(:blog,  uri: 'test')
     blog2.valid?
-    expect(blog2.errors[:uri]).to include('has already been taken')
+    expect(blog2.errors[:uri]).to include I18n.t('errors.messages.taken')
   end
 
   it 'take length limit for uri' do
     blog = build(:blog, uri: 'X' * 44)
     blog.valid?
-    expect(blog.errors[:uri]).to include('is too long (maximum is 32 characters)')
+    expect(blog.errors[:uri]).to include I18n.t('errors.messages.too_long', count: 32)
   end
 
   it 'take max length limit for blog name' do
     blog = build(:blog, name: 'X' * 444)
     blog.valid?
-    expect(blog.errors[:name]).to include('is too long (maximum is 255 characters)')
+    expect(blog.errors[:name]).to include I18n.t('errors.messages.too_long', count: 255)
   end
 end
 
