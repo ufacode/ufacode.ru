@@ -25,11 +25,11 @@ article
           .panel-footer
             .ratings
               - if user_signed_in?
-                = render 'shared/rating_like', resource: @post.to_sgid.to_s, result: '.post-rating'
+                = render 'shared/rating_like', resource: @post.to_sgid.to_s, result: '.post-rating', name: 'like'
               span.post-rating
                 = @post.rating
               - if user_signed_in?
-                = render 'shared/rating_dislike', resource: @post.to_sgid.to_s, result: '.post-rating'
+                = render 'shared/rating_dislike', resource: @post.to_sgid.to_s, result: '.post-rating', name: 'dislike'
             .post-share
 
 .container

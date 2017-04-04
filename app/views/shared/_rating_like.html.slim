@@ -1,2 +1,2 @@
-=> link_to ratings_path(resource: resource, direction: :like, result: result), method: :post, remote: true do
+=> link_to ratings_path(resource: resource, direction: :like, result: result), method: :post, remote: true, class: "link-#{name}" do
   span class="glyphicon glyphicon-thumbs-up"

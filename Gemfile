@@ -66,7 +66,9 @@ group :test, :development do
   gem "factory_girl_rails", "~> 4.0"
   gem "faker"
   gem "rspec-rails", "~> 3.0"
-  # gem 'poltergeist', '~> 1.6.0'
-  gem 'selenium-webdriver'
+  # gem 'poltergeist'
+  # gem 'selenium-webdriver'
+  gem 'capybara-webkit'
+  gem 'launchy'
 end
 

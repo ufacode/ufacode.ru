@@ -14,11 +14,11 @@ li.clearfix
       = clean_comment comment.content
       small.ratings
         - if user_signed_in?
-          = render 'shared/rating_like', resource: comment.to_sgid.to_s, result: ".comment-rating#{comment.id}"
+          = render 'shared/rating_like', resource: comment.to_sgid.to_s, result: ".comment-rating#{comment.id}", name: 'comment-like'
         span class="comment-rating#{comment.id}"
           = comment.rating
         - if user_signed_in?
-          = render 'shared/rating_dislike', resource: comment.to_sgid.to_s, result: ".comment-rating#{comment.id}"
+          = render 'shared/rating_dislike', resource: comment.to_sgid.to_s, result: ".comment-rating#{comment.id}", name: 'comment-dislike'
   .clearfix
 
   div id="comment_reply#{comment.id}" class="comment-reply"
